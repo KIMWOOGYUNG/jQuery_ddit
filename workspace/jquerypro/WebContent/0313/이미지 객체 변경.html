@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>이미지 객체 변경</title>
+		<script src="../js/jquery-3.4.1.min.js"></script>
+		<script>
+			$(function(){
+				$("button").hide();
+				$("img").css({"width":"100px","height":"100px"});
+				
+				//마우스 오버시 이미지 변경
+				$("img").mouseover(function(){
+					$(this).attr("src",$(this).attr("src2"));
+				});
+				
+				//temp 임시 속성에 원래 이미지 담아줌
+				$("img").attr("temp",function(){
+					return $(this).attr("src")
+				});
+				
+				//마우스 오버시 원래 이미지
+				$("img").mouseout(function(){
+					$(this).attr("src",$(this).attr("temp"));
+				});
+				
+				//더블클릭시 이미지 숨기기
+				$("img").dblclick(function(){
+					$(this).hide();
+					
+					//이미지가 다 사라지면 버튼 보이게하기
+					if($("img:visible").length == 0){
+						$("button").show();
+					}
+				});
+				
+				//버튼 클릭시 모든 이미지 보여지고 버튼은 숨김
+				$("button").click(function(){
+					$("img").show();
+					$("button").hide();
+				});
+				
+				
+			});
+		</script>
+	</head>
+	<body>
+		<img src="../img/spring1.jpg" src2 = "../img/딸기스무디.jpg">
+		<img src="../img/spring2.jpg" src2 = "../img/딸기스무디.jpg">
+		<img src="../img/spring3.jpg" src2 = "../img/딸기스무디.jpg">
+		<img src="../img/spring4.jpg" src2 = "../img/딸기스무디.jpg">
+		
+		<button>클릭(보이기)</button>
+	</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ajax_xml</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script>
+			/*
+				readyState 
+				
+				0(uninitialized) - request가 초기화 되지 않음
+				1(loading) - 서버와의 연결이 성사됨
+				2(loaded) - 서버가 request를 받음
+				3(interactive) - request를 처리하는 중
+				4(complete) - request에 대한 처리가 끝났으며 응답을 줄 준비가 완료됨
+				
+				status
+				
+				200 - ok 요청이 성공적으로 되었습니다.
+				202 - Accepted 요청을 수신하였지만 그에 응할 수 없다
+				404 - Not found 서버는 요청받은 리소스를 찾을 수 없습니다. (페이지가 존재하지 않음)
+				500 - internal server error 서버는 아직 처리 방법을 알 수 없다. (서버가 준비 안됨)
+				
+				
+			*/
+		//jqeury 미사용 버전---------------------------------------------------------------------------------
+			/* 
+			function loadDoc(){
+				var xhttp = new XMLHttpRequest();
+				xhttp.onreadystatechange = function(){
+					
+					//jquery ajax의 success와 done에 해당한다
+					if(this.readyState == 4 && this.status == 200){	//로딩4까지 되고 페이지가 있을때만 성공
+						console.log("xml이 로딩 되었습니다.");
+						dataLoad(this);
+					//jquery ajax의 error와 fail에 해당한다
+					}else{
+						console.log("xml이 로딩되지 않았습니다." + this.readyState + ", " + this.status);
+					}
+				}
+				
+				xhttp.open("GET","../data/cd_catalog.xml", true);	//소켓연결
+				xhttp.send();	//보내기
+				//404 ico는 앞에 로고 없다는 에러메시지로 상관없음
+			}
+				
+			function dataLoad(xml){
+				var xmlDoc = xml.responseXML;	//응답받은 xml을 변수에 넣음 (객체형태)
+												//responseXML : 서버에 요청하여 응답으로 받은 데이터를 문자열로 반환
+				var x = xmlDoc.getElementsByTagName("CD");	//xml파일에 가서 CD가져옴 (배열형태로 저장)
+				var result1 ="";
+				var result2 = "";
+				for(var i = 0; i < x.length; i++){
+					result1 += x[i].getElementsByTagName("ARTIST")[0].childNodes[0].nodeValue;
+					//getElementsByTagName은 집합을 가져오기 때문에 값이 하나라도 [0] 인덱스로 가져와야함
+					result1 += "<br>";
+					result2 += x[i].getElementsByTagName("TITLE")[0].childNodes[0].nodeValue;
+					result2 += "<br>";
+				}
+				document.getElementById("artist").innerHTML = result1;
+				document.getElementById("title").innerHTML = result2;
+				
+			}
+			 */
+		//jquery사용버전-------------------------------------------------------------------------------------
+			$(function(){
+				
+				$.ajax({
+					url : "../data/cd_catalog.xml",
+					type : "get",
+					datatype : "xml",
+					success : function(data){
+						console.log("xml이 로딩 되었습니다.");
+						var result1 = "";
+						var result2 = "";
+						//첫번째 CD의 요소만 가져옴
+						//$($(this).find("CD")[0]).find("ARTIST").text();
+						$(data).find("CD").each(function(){
+							result1 += $(this).find("ARTIST").text() + "<br>";
+							$("#artist").append(result1);
+							result2 += $(this).find("TITLE").text() + "<br>";
+							$("#title").append(result2);
+						});
+						$
+					},
+					error : function(xhr, status){
+						console.log(xhr + "xml이 로딩되지 않았습니다.");
+					}
+					
+				});
+			});
+		</script>
+		<script>
+			
+		</script>
+		
+	</head>
+	<body>
+		<button onclick="loadDoc();">버튼클릭</button>
+		<div id="content"></div>
+		<table border="1"; style="border-collapse:collapse">
+			<tr>
+				<td>Artist</td>
+				<td>Title</td>
+			</tr>
+			<tr>
+				<td id="artist"></td>
+				<td id="title"></td>
+			</tr>
+		</table>
+	</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ajax_chaining_ex(체이닝 문제)</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="../js/json2.js"></script>
+		<script>
+			$(function(){
+				$("button").click(function(){			
+					 
+					/* 방법1
+					$.post("../data/result_chaining.jsp",
+						{
+							name : $("input[type=text]").val(),
+							 addr : $("input[type=address]").val(),
+							 tel : $("input[type=tel]").val()	
+						}
+					).done(function(data){
+						$("body").append("전송하였습니다").append("<br>");
+						$("body").append(data);
+					})
+					.fail(function(xhr){
+						$("body").append(xhr.status + " 전송 실패하였습니다.");
+					});
+					   */
+					  
+					$.ajax({
+						url : "../data/result_chaining.jsp",	//요청 url
+						datatype : "json",	//데이터를 받는 형식	//!!dataType(x)
+						type : "post",	//요청 method 타입
+						data :"name="+$("#name").val() //쿼리스트링 형식
+							+"&add="+$("#add").val() 
+							+"&tel="+$("#tel").val()
+							
+					})
+					.done(function(data){
+						data = data.trim();
+						/*
+							json2.js 외부 스크립트 파일 추가
+							- JSON.parse() : string to json객체
+							- JSON.stringify() : json객체 to string (.toString()도 됨)
+						*/
+						var obj = JSON.parse(data);	//txt형식을 json형태의 오브젝트로 형변환
+						console.log(obj.name);	//오브젝트.name으로 접근가능(json형식)
+						$("body").append("전송하였습니다");
+						$("body").append(obj.name);
+					})
+					.fail(function(xhr){
+						$("body").append(xhr.status + " 전송 실패하였습니다.");
+					});
+					 
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<!-- 
+			해당하는 input 값을 
+			result_chaining.jsp 파일에 post방식으로 전송한다
+			비동기 통신으로 값을 받아서 (done메서드 이용)
+			body태그에 출력한다 (전송버튼 밑에 출력)
+			
+			전송 성공 또는 실패 했을 경우, 
+			맨 마지막에 "전송하였습니다." / "전송 실패 하였습니다." 라고 출력해준다.
+		 -->
+		 이름 : <input type="text" id="name"><br>
+		 주소 : <input type="address" id="add"><br>
+		 전화번호 : <input type="tel" id="tel"><br>
+		 <button>전송</button>
+	</body>
+</html>

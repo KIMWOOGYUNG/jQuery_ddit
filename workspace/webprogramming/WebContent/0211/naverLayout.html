@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<style>
+			a{text-decoration:none;}
+			
+			body{background-color:#ebebeb; margin: 0 auto;}
+			
+			#white{background-color:white; width:100%;}
+			header{margin:0 auto; width:1080px; height:130px; background-color:white; padding:10px;}
+			#naverLogo{width:197px; height:50px; background:url(../img/naverLogo2.png) -4px -3px; float:left; margin-top:45px; margin-right:20px;}
+			#blank{border:2px solid #2dd663; width:470px; height:45px; float:left; margin-top:50px;}
+			#keyboard{width:20px; height:12px; background:url(../img/naverLogo2.png) -33px -60px; margin-top:70px; margin-left:-50px; border:0; position:absolute;}
+			#arrow{width:9px; height:10px; background:url(../img/naverLogo2.png) -87px -60px; margin-top:72px; margin-left:-20px; position:absolute;}
+			#submit{width:49px; height:51px; background-color:#2dd663; float:left; border:0; margin-top:50px;}
+			#blankBtn{width:21px; height:21px; background : url(../img/naverLogo2.png) -4px -60px; border:0; margin:10px; display:block;}
+			
+			#area_links{float:right; font-size:11px; margin-top:5px;}
+			#area_links #startPage{color:#616161}
+			#area_links #startPage:hover{text-decoration:underline}
+			#area_links .game{color:#b8b4b4; font-weight:bold;}
+			#area_links .game:hover{color:red;}
+			
+			
+			#area_links a{color:}
+			
+			nav{border-top:1px solid #f1f3f6;}
+			.navi{margin:0 auto; width:1080px; height:47px;}
+			nav a{font-weight:bold;}
+			ul{display:inline-block; padding:0px 10px;}
+			li{display:inline; width:60px;}
+			.menu1 a{color:#03CF5D;}
+			.menu2 a{color:#000000;}
+			span{color:#000;}
+			
+	
+			
+			#container{padding:8px 10px 0px; margin:0 auto; width:1080px;}
+			
+			#content1{width:730px;float:left; margin-right:10px;}
+			
+			#content1.img{height:120px;border:1px solid #dbd9d9;}
+	
+			.newstop{height:44px; font-weight:bold; border:1px solid #dbd9d9; margin: 5px 0px;}
+			.newstop a{color:black; margin: 0px 8px;}
+			.newstop ul{float:right; font-size:12px;}
+			.newstop ul a{color:grey;}
+			
+			.menulist{height:45px; font-weight:bold; border:1px solid #dbd9d9}
+			.menulist a{color:black; margin: 0px 8px;}
+			.menulist #allPress{color:grey;}
+			
+			#content2{width:320px; float:right;}
+			
+			#loginBox{margin-left:-10px; padding:15px;border:1px solid #dbd9d9;height:100px; background-color:white;}
+			#joinText{color:#888; font-size: 12px;}
+			#loginBtn{margin:3px 0px;}
+			#find{font-size:13px; padding:3px 0px;}
+			#find a{color:#666;}
+			#find a:hover{text-decoration:underline}
+			#join{float:right;}
+			
+			#areaHeader{height:33px; margin:9px 0px -10px -10px; padding:10px 0px 0px 10px; border:1px solid #dbd9d9;}
+			#areaHeader a{width:72px; height:14px; font-weight:bold; font-size:14px; color:black;}
+			
+			
+			#news{height:106px; margin-left:-10px; padding:0px;border:1px solid #dbd9d9;border-top:none;}
+		</style>
+	</head>
+	<body>
+		<div id="white">
+			<header>
+				<div id="search">
+					<p id="naverLogo"><a href="https://www.naver.com/"></a></p>
+					<form action="result.jsp">
+						<input type="text" id="blank">
+						<span id="keyboard"></span>
+						<span id="arrow"></span>
+						<button id="submit" type="submit"><div id = "blankBtn" title="검색"></div></button>
+					</form>
+				</div>
+				<div id="area_links">
+					<a id="startPage" href="https://help.naver.com/support/contents/contents.help?serviceNo=1074&categoryNo=16690">네이버를 시작페이지로 &gt; </a>
+					|
+					<a class="game" href="https://jr.naver.com/">쥬니어네이버</a>
+					<a class="game" href="https://happybean.naver.com/main/SectionMain.nhn">해피빈</a>
+				</div>
+			</header>
+			
+			<nav>
+				<div class="navi">
+					<ul class="menu1" >
+						<li><a href="https://nid.naver.com/nidlogin.login?url=http%3A%2F%2Fmail.naver.com%2F">메일</a></li>
+						<li><a href="https://section.cafe.naver.com/">카페</a></li>
+						<li><a href="https://section.blog.naver.com/BlogHome.nhn?directoryNo=0&currentPage=1&groupId=0">블로그</a></li>
+						<li><a href="https://kin.naver.com/">지식iN</a></li>
+						<li><a href="https://shopping.naver.com/">쇼핑</a></li>
+						<li><a href="https://nid.naver.com/nidlogin.login?svctype=1&url=https%3A%2F%2Forder.pay.naver.com%2Fhome">Pay</a></li>
+						<li><a href="https://tv.naver.com/">TV</a></li>
+					</ul>
+					<ul class="menu2">
+						<li><a href="https://dict.naver.com/">사전</a></li>
+						<li><a href="https://news.naver.com/">뉴스</a><li>
+						<li><a href="https://finance.naver.com/">증권</a></li>
+						<li><a href="https://land.naver.com/">부동산</a></li>
+						<li><a href="https://map.naver.com/v5/?c=14184792.4946411,4345210.3720442,15,0,0,0,dh">지도</a></li>
+						<li><a href="https://movie.naver.com/">영화</a></li>
+						<li><a href="https://music.naver.com/">뮤직</a></li>
+						<li><a href="https://book.naver.com/">책</a></li>
+						<li><a href="https://comic.naver.com/index.nhn">웹툰</a></li>
+					</ul>
+					<span>더보기</span>
+				</div>
+			</nav>
+		</div>
+			
+			<div id="container" >
+				<div id="content1">
+					<a href="https://nv.veta.naver.com/fxshow?su=SU10079&nrefreshx=0"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQOkOtx-uD3vdnnK_fyLWW-i8BrewEh0tiCbkSS_Vshup1Fdy4g" alt="광고" width="730" height="124"></a>
+					<div class="newstop">
+						<a href="https://news.naver.com/main/list.nhn?mode=LPOD&mid=sec&sid1=001&sid2=140&oid=001&isYeonhapFlash=Y">연합뉴스 &gt;</a>
+						<ul>
+							<li><a href="https://news.naver.com/"><span style="color:#2dd663">네이버뉴스</span></a></li>
+							<li><a href="https://entertain.naver.com/home">연예</a></li>
+							<li><a href="https://sports.news.naver.com/index.nhn">스포츠</a></li>
+							<li><a href="https://news.naver.com/main/main.nhn?mode=LSD&mid=shm&sid1=101">경제</a></li>
+						</ul>
+					</div>
+						
+					<div class="menulist">
+						<a href="https://newsstand.naver.com/" target="_blank">뉴스스탠드 &gt;</a>
+						<a id="allPress" href="" >전체언론사</a>
+						|
+						<a href="" >MY 뉴스</a>
+					</div>
+					<div class="api">api</div>
+					<div class="category">category</div>
+					<div class="themeCast">themeCast</div>
+					<div class="banner">banner</div>
+				</div>
+				<div id="content2">
+					<div id="loginBox">
+						<span id="joinText">네이버를 더 안전하고 편리하게 이용하세요.</span>
+						<div id="loginBtn"><a href="https://nid.naver.com/nidlogin.login?mode=form&url=https%3A%2F%2Fwww.naver.com"><img src="../img/naverJoin.png"></a></div>
+						<div id="find">
+							<a href="https://nid.naver.com/user2/help/idInquiry.nhn?menu=idinquiry">아이디</a>
+							·
+							<a href="https://nid.naver.com/user2/help/pwInquiry.nhn?menu=pwinquiry">비밀번호 찾기</a>
+							<a id="join" href="https://nid.naver.com/user2/V2Join.nhn?m=agree&lang=ko_KR&cpno=">회원가입</a>
+						</div>
+					</div>
+					<div id="areaHeader">
+						<a id="date" href="https://nid.naver.com/nidlogin.login?mode=form&url=">02.11.(화)</a>
+						|
+						이슈
+					</div>
+					<div id="news">
+						
+					</div>
+					<div id="ad2">
+						
+					</div>
+				</div>
+			</div>
+			
+			<footer>
+				<div class="notice"></div>
+				<div class="aside"></div>
+				<div class="terms"></div>
+			</footer>
+	</body>
+</html>

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>inputAttribute</title>
+	</head>
+	<body>
+		<form>
+			<input type="text" name="firstName" placeholder="firstName"><br>
+			<input type="text" name="lastName" placeholder="lastName"><br>
+			
+		</form>
+	
+	</body>
+</html>

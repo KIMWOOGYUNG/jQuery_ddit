@@ -1,0 +1,6 @@
+function solution(n, money) {
+    var answer = 0;
+    return answer;
+}
+
+console.log(solution(5,[1,2,3]));

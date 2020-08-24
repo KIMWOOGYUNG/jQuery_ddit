@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>button이벤트</title>
+		<script>
+			function down(elem){
+				console.log("down");
+				elem.style.color = "red"; //버튼 객체 안의 색상변경
+			}
+			function up(elem){
+				console.log("up");
+				elem.style.color = "blue";
+			}
+		</script>
+	</head>
+	<body>
+		<button onmousedown = "down(this);" onmouseup = "up(this);">눌러보세요!</button>
+	</body>
+</html>
+
+<!-- 
+	* onmousedown : 버튼 클릭시
+	  onmouseup : 버튼 클릭 뗐을때
+ -->

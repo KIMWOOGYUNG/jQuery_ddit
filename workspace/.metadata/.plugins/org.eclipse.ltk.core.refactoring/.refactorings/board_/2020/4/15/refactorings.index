@@ -1,0 +1,21 @@
+1586140488169	Rename resource 'dist'
+1586140682857	Rename resource 'board.html'
+1586140686946	Rename resource 'list.html'
+1586141326935	Rename resource 'board.jsp'
+1586141330556	Rename resource 'select.jsp'
+1586218369829	Move 'plugins' to 'bootstrap'
+1586218382165	Move 3 resources to 'dist'
+1586222290086	Rename resource 'board.jsp'
+1586223053343	Move 2 resources to 'WebContent'
+1586223057793	Delete element
+1586223646269	Rename resource 'jdbc_select.jsp'
+1586223659310	Copy file
+1586230389812	Rename resource 'select.html'
+1586230942377	Rename resource 'list.html'
+1586230953070	Rename resource 'create.html'
+1586306871632	Rename package 'kr.or.ddit.arcodian.config'
+1586306917735	Rename type 'boardVo'
+1586311124942	Move 'listpage.jsp' to 'board_data'
+1586311994967	Copy file
+1586312000083	Copy file
+1586314455779	Move 8 resources to 'lib'

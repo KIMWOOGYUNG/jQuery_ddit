@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>key이벤트</title>
+		<script src = "../js/jquery-3.4.1.min.js"></script>
+		<script>
+			$(function(){
+			//keypress() keydown(키를 눌렀을때) keyup(키를 눌렀다 뗄때)
+			//keypress는 대소문자 구문, keydown은 대소문자 구문x
+			
+				$("#key").on("keypress", function(event){
+					$("#str").html(event.type + ":" + event.which);	//유니코드
+				});
+				
+			//focusin : 커서가 필드 안에 있을때
+				$("#key").on("focusin", function(){
+					$(this).css("background","orange");
+				});
+			
+			//focusout : 필드 밖으로 나왔을때
+				$("#key").on("focusout", function(){
+					$(this).css("background","white");
+				});
+			
+			
+			/*
+				1) ID, 비밀번호 입력하는 필드, 버튼을 만든다 (html)
+				2) ID에 포커스가 있으면 테두리를 점선으로 표시
+				3) 비밀번호에 포커스가 있으면 배경색을 변경
+				4) 전송버튼을 누르면 해당하는 텍스트(id, 비번)을 아래에 기입해주세요(div 생성 후 붙임)
+			
+				**fieldset, label추가
+			*/
+			/* 
+				$("input[type=text]").focusin(function(){
+					$(this).css("border","2px dashed red");
+				});
+				$("input[type=text]").focusout(function(){
+					$(this).css("border","");
+				});
+				$("input[type=password]").focusin(function(){
+					$(this).css("background","yellow");
+				});
+				$("input[type=password]").focusout(function(){
+					$(this).css("background","");
+				});
+				 */
+				
+				$("button").click(function(){
+					$("<div/>",{
+						"text" : $("input[type=text]").val()+"," + $("input[type=password]").val()
+					}).insertAfter(this);
+				});
+				
+				$("input").focus(function(){
+					$(this).addClass("box");
+				});
+				
+				//blur : 포커스가 밖으로 빠져나왔을떄를 의미
+				$("input").blur(function(){
+					$(this).removeClass("box");
+				});
+			});
+			
+		</script>
+		<style>
+			.box{background : yellow;}
+		</style>
+	</head>
+	<body>
+	<!-- 
+		<p>아래 텍스트 필드에 내용을 입력하세요</p>
+		<input type="text" id="key">
+		<p id="str"></p>
+		  -->
+		
+		<fieldset>
+			<legend>로그인</legend>
+			ID : <input type="text"><br>
+			PW : <input type="password"><br><br>
+			<button>전송</button>
+		</fieldset>
+	</body>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>String객체 문제</title>
+		<script>
+			/*
+				문제 1) 주민등록번호를 110326-4432618로 입력받은 경우
+					   출력)) 
+					   생일은 2011년 3월 26일 
+					   성별은 여자 
+					   나이는 만 8살 (오늘날짜를 기준으로 만나이 계산)
+					   
+				문제 2) prompt로 주민번호를 입력받아서 출력을 해주세요.
+					  출력))
+					  생일은 2011년 3월 26일
+					  성별은 여자
+					  나이는 만 8살 (오늘날짜를 기준으로 만나이 계산)
+					  
+				문제 3) 주민번호의 유효성을 검사
+					  주민번호를 prompt로 입력받아 주민번호의 유효성을 검사하기
+					  
+		             	  주민번호가 ABCDEF-GHIGKLM일 경우
+		               1. A*2 + B*3 + C*4 + D*5 + E*6 + F*7 + G*8 + H*9 + I*2 + J*3 + K*4 + L*5의 총 합을 구한다.
+		               2. 1번의 합을 11로 나눈 나머지를 구한다.
+		               3. 11에서 2번의 결과값을 뺀다.
+		               4. 3번의 결과값이 0~9이면 그대로 , 10이면 0, 11이면 1로 변환.
+		               5. 4번의 결과와 맨끝자리 M의 값이 같으면 맞는 주민번호
+		               
+		              	 출력) 주민번호가 유효합니다. or 유효한 번호가 아닙니다 출력
+
+					  
+			*/
+			
+			var regno = prompt("주민번호를 입력해주세요 (-포함) > ");
+			var birthday = "";
+			var gender = "";
+			var age = 0;
+			var now = new Date();
+			var year = "";
+			var month = "";
+			var date = "";
+			
+			//년월일
+			if(parseInt(regno.charAt(0)) < 4){
+				year += "20" + regno.substring(0, 2);
+			}else if(parseInt(regno.charAt(0)) >= 4){
+				year += "19" + regno.substring(0, 2);
+			}
+			
+			if(regno.charAt(2) == 0){
+				month = regno.charAt(3);
+			}else{
+				month = regno.substring(2,4);
+			}
+			
+			if(regno.charAt(4) == 0){
+				date = regno.charAt(5);
+			}else{
+				date = regno.substring(4,6);
+			}
+			
+			
+			
+			//생일
+			birthday += year + "년 " + month + "월 " + date + "일";
+			
+			
+			//성별
+			if((regno.charAt(7) == 1) || (regno.charAt(7) == 3)){
+				gender += "남자";
+			} else if((regno.charAt(7) == 2) || (regno.charAt(7) == 4)){
+				gender += "여자";
+			}
+
+			//만 나이
+			age = now.getFullYear() - year;
+			if(now.getMonth() < parseInt(month)){ //이전 달이거나
+				age--;
+			}else if(now.getDate() < parseInt(date)){ //일자가 적거나
+				age--;
+				
+			}
+			 
+			
+			//주민번호 유효성 검사
+			var temp = (regno.charAt(0) * 2) 
+					 + (regno.charAt(1) * 3) 
+					 + (regno.charAt(2) * 4) 
+					 + (regno.charAt(3) * 5) 
+					 + (regno.charAt(4) * 6) 
+					 + (regno.charAt(5) * 7) 
+					 
+					 + (regno.charAt(7) * 8) 
+					 + (regno.charAt(8) * 9) 
+					 + (regno.charAt(9) * 2) 
+					 + (regno.charAt(10) * 3) 
+					 + (regno.charAt(11) * 4) 
+					 + (regno.charAt(12) * 5);
+			
+			var temp = temp % 11;
+			var temp = 11 - temp;
+			if(temp == 10){
+				temp = 0;
+			}else if(temp == 11){
+				temp = 1;
+			}
+			
+			if(temp == regno.charAt(13)){
+				document.write("주민번호가 유효합니다.<br>");
+			}else{
+				document.write("유효한 주민번호가 아닙니다.<br>");
+			}
+						
+			//출력
+			document.write("생일은 " + birthday + "<br> 성별은 " + gender + "<br> 나이는 만 " + age + "살");
+			
+			
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

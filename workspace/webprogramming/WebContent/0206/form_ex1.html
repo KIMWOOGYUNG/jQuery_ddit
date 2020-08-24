@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>form_ex1</title>
+		<style>
+		.border{border:1px solid}
+		</style>
+	</head>
+	<body>
+		<form action="result.jsp" method="get">
+			<h1>이메일 전송화면</h1>
+			<label for = "_name">이름 : </label><input type="text" id="_name" name="_name" class="border"><br>
+			<label for = "email">이메일 주소: </label><input type="email" id="email" name="email" class="border"><br>
+			<label for = "content">내용 : </label><br>
+			<textarea rows="10" cols="80" id="content" name = "content" class="border"></textarea>
+			<br>
+			<input type="submit" value="전송" class="border">
+			<input type="reset" value="재설정" class="border">
+		</form>
+		
+	</body>
+</html>

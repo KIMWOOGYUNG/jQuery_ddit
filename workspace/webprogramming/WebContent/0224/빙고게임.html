@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>빙고게임</title>
+<style>
+	table{
+	border : 1px solid black;
+	width : 500px;
+	height : 500px;
+	}
+</style>
+<script>
+	var str = "";
+	//<td id = "" onclick = "changebackColor(this.id);"></td>
+	/* function changebackColor(id){
+		change = document.getElementById(id);
+		change.style.backgroundColor = "#ffd7b0";
+		change.style.color = "#de9b78";
+	} */
+	str += "<table>";
+	for(var i = 0; i < 5; i++){
+		str += "<tr>";
+		for(var j = 0; j < 5; j++){
+			str += "<td>";
+			str += "</td>";
+		}
+		str += "</tr>";
+	}
+	str += "</table>";
+	
+	document.getElementById("bingo").innerHTML = str;
+</script>
+</head>
+<body>
+	<div id = "bingo"></div>
+</body>
+</html>

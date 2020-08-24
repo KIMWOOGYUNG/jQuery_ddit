@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script>
+			$(function(){
+				$("button").on("click", function(){
+					$("p").load("test.txt #p1");	//파일 중 태그 선택해서 가져옴
+					
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<button>클릭</button>
+		<div></div>
+		<p>여기에 p태그를 넣어주세요</p>
+	</body>
+</html>

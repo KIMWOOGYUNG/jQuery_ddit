@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>필터선택자_prac</title>
+		<script src="../js/jquery-3.4.1.min.js"></script>
+		<script>
+			/*
+			html태그에 p, div, span태그를 생성한 후 
+			각각 jquery, jQuery, jjQuery 텍스트를 입력하세요
+			
+			jquery 스크립트에서
+			-> p태그안에 jquery 문자열이 포함된 태그를 선택하여 
+			안에 내용을 alert로 표시해주세요.
+			
+			->div태그안에 jQuery 문자열이 포함되지 않은 태그를 선택하여
+			테두리 선을 빨간색으로 변경
+			
+			-> span태그안에 jQuery문자열이 포함되어 있는 태그를 선택한 후
+			배경색으로 녹색을 지정			
+			*/
+			
+			$(function(){
+				alert($("p:contains(jquery)").text());
+				$("div:not(:contains(jQuery))").css("border","2px solid red");
+				$("span:contains(jQuery)").css("background","green");
+			});
+		</script>
+	</head>
+	<body>
+		<p>jquery</p>
+		<p>jQuery</p>
+		<p>jjQuery</p>
+		<hr>
+		<div>jquery</div>
+		<div>jQuery</div>
+		<div>jjQuery</div>
+		<hr>
+		<span>jquery</span>
+		<span>jQuery</span>
+		<span>jjQuery</span>
+	</body>
+</html>

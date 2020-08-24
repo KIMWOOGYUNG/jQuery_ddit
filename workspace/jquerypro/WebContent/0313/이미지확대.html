@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>이미지확대</title>
+		<script src = "../js/jquery-3.4.1.min.js"></script>
+		<style>
+			.thumbnail{width:500px;}
+			#preview{z-index:9999; position:absolute; border:1px solid #ccc; display:none;}
+		</style>
+		<script>
+			$(function(){
+				//$(".thumnail").mouseover(); 와 동일
+				$(document).on("mouseover",".thumbnail",function(event){
+					$("body").append("<p id='preview'><img src ='"+$(this).attr("src")+"' /></p>");
+					//사이즈는 원래 이미지의 사이즈
+				
+				/* 	$("#preview").css("top", (event.pageY -30) + "px")
+								 .css("left", (event.pageX -30) + "px").fadeIn(5000); 
+				*/
+				});
+				
+				$(document).on("mousemove",".thumbnail", function(event){
+					$("#preview").css("top", (event.pageY +10) + "px")
+					 .css("left", (event.pageX +30) + "px").fadeIn("fast");
+				});
+				
+				$(document).on("mouseout",".thumbnail", function(){
+					$("#preview").remove();
+				})
+			});
+		</script>
+	</head>
+	<body>
+		<img src = "../img/수국.jpg" class="thumbnail">
+	</body>
+</html>

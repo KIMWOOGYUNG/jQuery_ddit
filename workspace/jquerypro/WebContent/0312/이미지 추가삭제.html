@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>이미지 추가삭제</title>
+	<script src="../js/jquery-3.4.1.min.js"></script>
+	<script>
+		/*
+			1. p태그를 4~5개 만들고 p태그 안에 이미지명을 작성한다
+			2. p태그를 클릭하면 이미지명에 대한 이미지를 생성하여 
+			
+			3. p태그 뒤에 붙인다
+			4. 이미지를 클릭하면, p태그 뒤에 button을 생성하여 붙인다
+				- button명은 "삭제"
+			
+			5. button을 클릭하면 해당 이미지가 삭제된다.
+				-prev() 메서드 : 해당 하는 태그 바로 앞에 있는 태그를 가져오는것
+				-next() 메서드 : 해당 하는 태그 바로 뒤에 있는 태그를 가져오는것
+		*/
+		
+		$(function(){
+			$("p").click(function(){
+				var txt = $(this).text();
+				//alert(txt);
+				var img = $("<img/>",{
+							"src":"../img/"+txt+".jpg",
+							"width":"100px",
+							"height":"100px",
+							"click":function(){
+								$(this).after($("<button/>",{
+										"text":"삭제",
+										"click":function(){
+											$(this).prev().remove();
+											$(this).remove();
+									}
+								}));
+							}
+						});
+				$(this).after(img);		
+			});
+		});
+			
+	</script>
+	</head>
+	<body>
+		<p>국화</p>
+		<p>꽃</p>
+		<p>딸기스무디</p>
+		<p>수국</p>
+		<p>봄이부시게</p>
+	</body>
+</html>

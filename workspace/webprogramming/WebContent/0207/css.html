@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>css</title>
+		<!-- 외부 스타일시트 -->
+		<link href="https://fonts.googleapis.com/css?family=Gaegu|Nanum+Brush+Script&display=swap" rel="stylesheet">
+		<link href="../css/mycss.css" rel="stylesheet"> <!--link의 타입이 stylesheet라고 알려줌-->
+		<!-- 내부 스타일시트 -->
+		<style>
+			*{color:pink;}
+			/* p{background-color:yellow;
+			  color:hotpink;
+			  font-size:30pt;
+			  font-family: 'Nanum Brush Script', cursiv e;}
+			  
+			div.divBox{width:300px;height:300px;background-color:yellow;border:1px dashed red;color:white;} */
+			/* 
+			자식 위치에서 가져올땐 스페이스: div span
+			동일 위치에서 가져올땐 붙여쓰기 : div.divBox 
+			*/
+
+			/* 
+			mycss.css외부스타일 시트를 변경하여 div배경색을 빨간색으로 변경
+			내부스타일시트를 변경하여 div안에 텍스트 색상을 흰색으로 변경
+			div html태그안에 "div입니다"라는 텍스트를 추가하고 인라인 스타일시트로 해당 텍스트 색상을 핑크색으로 변경"*/
+			
+			/* h1,h2,h3{color:green;} */
+		</style>
+	</head>
+	<body>
+		<!-- 인라인 스타일시트 -->
+		<p style="color:red">여기는 p태그 입니다.</p>
+		
+		<div class="divBox" style="color:pink;">div입니다
+			<span></span>
+		</div>
+		
+		<p class="divBox"></p>
+		<h1>h1태그입니다.</h1>
+		<h2>h2태그입니다.</h2>
+		<h3>h3태그입니다.</h3>
+	</body>
+</html>
+
+
+<!-- * 구글폰트는 인터넷 연결시에만 사용가능 
+	 * 스타일시트 순서 : 인라인 -> 내부 -> 외부
+	 * rel="stylesheet" : 스타일시트로 연결해준다.
+-->

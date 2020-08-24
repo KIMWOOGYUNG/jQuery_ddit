@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>가위바위보</title>
+		<style>
+			div{text-align : center;}
+			#user{float : left;}
+			#com{float : right;}
+			img{width : 300px; height : 200px;}
+		</style>
+		<script>
+			
+			function rsp(){
+				var user = "";
+				var com = "";
+
+				var ran = Math.floor(Math.random() * 3);
+				var arr = ["가위", "바위", "보"];
+				var arrUserImg = ["../img/가위_좌.png", "../img/바위_좌.png", "../img/보_좌.png"];
+				var arrComImg = ["../img/가위_우.png", "../img/바위_우.png", "../img/보_우.png"];
+				
+				
+				for(var i = 0; i < arr.length; i++){
+					if(ran == i){
+						com += arr[i];
+					}
+				}
+				
+				user = prompt("가위~바위~보!");
+				var res = "";
+				if(user == com) res += "비겼습니다...";
+				else{
+					switch(com){
+					case "가위" : document.getElementById("comimg").src = arrComImg[0];
+								 if(user=="바위"){
+									document.getElementById("userimg").src = arrUserImg[1];
+									 res = "user가 이겼습니다!!";
+								 }else{
+									 document.getElementById("userimg").src = arrUserImg[2];
+									 res = "computer가 이겼습니다!!";
+								 }break;
+					case "바위" : document.getElementById("comimg").src = arrComImg[1];
+						if(user=="보"){
+									document.getElementById("userimg").src = arrUserImg[2];
+									res = "user가 이겼습니다!!";
+					 			 }else{
+					 				document.getElementById("userimg").src = arrUserImg[0];
+					 				res = "computer가 이겼습니다!!";
+					 			 }break;
+					case "보" : document.getElementById("com").src = arrComImg[2];
+								if(user=="가위"){
+									document.getElementById("userimg").src = arrUserImg[0];
+									res = "user가 이겼습니다!!";
+								}else{
+									document.getElementById("userimg").src = arrUserImg[1];
+									res = "computer가 이겼습니다!!";
+								}break;
+					}
+				}
+				
+				document.getElementById("rs").innerHTML = res;
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id = "result">
+			<button onclick = "rsp();">게임시작</button>
+			<br>
+			<div id = "user">사람 <br><img id="userimg" src = "../img/보_좌.png"></div>
+			
+			<div id = "com">컴퓨터 <br><img id="comimg" src = "../img/보_우.png"></div>
+			<br><br><br><br><br><br><br><br><br><br>
+			<div id = rs></div>
+			
+		</div>
+	</body>
+</html>

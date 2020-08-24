@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>formEx1</title>
+		<style>
+			form{text-align : center;}
+			textarea{width:600px; text-align : center;}
+			div{text-align : center;}
+		</style>
+		<script>
+			function result(){
+				var ele = document.ff;
+				var dan = ele.input.value;
+				var row = "";
+				for(var i = 1; i <= 9; i++){
+					row += dan + " * " + i + " = " + (dan*1) + "\n";
+				}
+				ele.text.innerHTML = "*** " + dan + "단 ***\n\n" + row;
+			}
+			
+			function onchange(){
+				var ele = document.getElementById(text);
+				var dan = ele.input.value;
+				var row = "";
+				for(var i = 1; i <= 9; i++){
+					row += dan + " * " + i + " = " + (dan*1) + "\n";
+				}
+				ele.text.innerHTML = "*** " + dan + "단 ***\n\n" + row;
+			}
+		</script>
+	</head>
+	<body>
+	<!-- 
+		<div>*** 구구단 출력하기 ***</div><br>
+		<form name = "ff">
+			<input type = "text" name = "input" id = "input">단
+			<button onclick = "result();return false;">출력</button><br><br>
+			<textarea rows="15" name = "text"></textarea>
+		</form>
+		return false;하면 그전까지 실행하고 멈춤
+		 -->
+		
+		<br><hr><br>
+		<form name = "ff">
+			<select>
+				<option value = "2">2</option>
+				<option value = "3">3</option>
+				<option value = "4">4</option>
+				<option value = "5">5</option>
+				<option value = "6">6</option>
+				<option value = "7">7</option>
+				<option value = "8">8</option>
+				<option value = "9">9</option>
+			</select>
+			<button onclick = "onchange();return false;">출력</button><br><br>
+			<div>결과출력</div>
+			<div id = "text"></div>
+		</form>
+	</body>
+</html>

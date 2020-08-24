@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="../js/jquery-3.4.1.min.js"></script>
+		<script>
+			$(function(){
+				//$("li:first, li:last").css("background","yellow").css("color","red"); //메소드 체이닝방식
+				$("li:first, li:last").css({'background':'yellow','color':'red'});	//css안에서 한꺼번에
+				//$("li:last").css("background","pink");
+				
+				//jQuery 문자열이 포함된 span태그 선택자
+				$("span:contains(jQuery)").css("border","2px solid red");
+				
+				//jQuery 문자열이 포함되지 않은 span태그 선택자
+				$("span:not(:contains(jQuery))").css("border","1px dashed blue");
+			
+				//span태그를 갖는 div요소 선택자
+				$("div:has(span)").css("border","5px solid green");
+				
+				/*
+					문자열 있는지 검색은 contains()
+					태그가 있는지 검색은 has()
+				*/
+				
+				$("div:empty").css("border","2px solid blue");
+				
+			});
+		</script>
+	</head>
+	<body>
+		<ul>
+			<li>one</li>
+			<li>two</li>
+			<li>three</li>
+			<li>four</li>
+			<li>five</li>
+		</ul>
+		<h2>필터선택자</h2>
+		<p>
+			- 내용필터 : 포함하고 있는 문자나 선택자에 의해서 선택<br>
+			contains() <br>
+			empty() <br>
+			parent() <br>
+			has(selector) <br>
+		</p>
+		<div>오늘도 화이팅!
+			<span>오늘도 힘들다ㅠㅠ</span>
+		</div>
+		<p>
+			Hello jquery!
+			<span>Thanks, jquery</span>
+		</p>
+		<div class="myclass">jQuery</div>
+		<span class="notMyclass">span jQuery</span>
+		
+		<div></div>
+	</body>
+</html>

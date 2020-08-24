@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>sonAjax</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script>
+			$(function(){
+				$("button").click(function(){
+					$.ajax({
+						url : "./data/result.json",
+						dataType : "json",
+						success : function(data){
+							var str = "";
+							$.each(data, function(i){
+								str += data[i].name + "<br>";
+								str += data[i].age + "<br>";
+							});
+							$("body").append(str);
+						
+						}
+					});					
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<button>클릭</button>
+		<br>
+	</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>formEx2</title>
+		<script>
+			function result(){
+
+				var ele = document.ff;
+				var name = ele.name.value;
+				var gender = ele.gender.value;
+				var hobby = "";
+				var hobbylist = "";
+				for(var i = 0; i < ele.hobby.length; i++){
+					if(ele.hobby[i].checked){
+						hobbylist += ele.hobby[i].value + ", ";
+					}
+				}	
+				hobbylist = hobbylist.slice(0,-2);
+				
+				if(hobbylist == ""){	//아무것도 안담기면 object 형으로 바뀌어서 ""로 스트링 지정 또는 0으로 확인가능함
+					hobby += "취미가 없군요!";
+				}else{
+					hobby += "취미는 " + hobbylist + "이군요!";
+				}
+				
+				ele.area.innerHTML = name + "씨!\n당신은 " 
+									+gender + "이고,\n"  
+									+ hobby;
+				
+			}
+		</script>
+	</head>
+	<body>
+		<form name = "ff">
+			이 름 : <input type = "text" name = "name" id = "name"><br><br>
+			성 별 : <input type = "radio" name = "gender" value = "남자">남자 &ensp;
+				  <input type = "radio" name = "gender" value = "여자">여자<br><br>
+			취 미 : <input type = "checkbox" name = "hobby" value="여행">여행
+				  <input type = "checkbox" name = "hobby" value="독서">독서
+				  <input type = "checkbox" name = "hobby" value="영화감상">영화감상
+				  <input type = "checkbox" name = "hobby" value="바둑">바둑
+				  <input type = "checkbox" name = "hobby" value="장기">장기
+				  <input type = "checkbox" name = "hobby" value="등산">등산
+				  <input type = "checkbox" name = "hobby" value="낚시">낚시<br><br>
+			
+			<input type = "button" onclick = "result();" value = "결과출력"><br><br>
+			<textarea rows="10" name="area" id="rs"></textarea>
+		</form>
+	</body>
+</html>

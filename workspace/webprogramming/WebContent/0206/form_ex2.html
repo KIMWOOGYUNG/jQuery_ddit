@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>form_ex2</title>
+		<style>
+		.border{border:1px solid}
+		</style>
+	</head>
+	<body>
+		<h1>회원 가입 화면</h1>
+		<form action="result2.jsp" method="get">
+			<label for = "_name">이름: </label> <input type="text" id="_name" name="_name" class="_name"><br>
+			<label for ="address">주소: </label> <input type="text" id="address" name="address" class="address"><br>
+			<label for="email">email: </label> <input type="email" id="email" name="email" class="email">
+			<br>
+			<input type="radio" name="gender" value="Male" checked="checked"> Male<br>
+			<input type="radio" name="gender" value="Female"> Female<br>
+			<input type="submit" value="Send" class="border">
+			<input type="reset" value="원래대로" class="border">
+		</form>
+	</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>form_selector</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script>
+			$(function(){
+				var str = "";
+				$("#btnview").click(function(){
+					/*
+						val()메서드를 이용하여 입력하거나 선택된 값을 가져오기
+						radio 선택된 값 가져오기 : $(":radio:checked").val();
+						select 선택한 값 (option) : $("#work :selected").val();	//select만  스페이스하고 :selected!!
+						radio랑 select도 사실 val()로 바로 가져올 수 있음
+					*/
+					
+					str += $("#userName").val()+"\n";	//alert으로 찍을땐 br말고 \n으로
+					//str += $("#gender:checked").val()+"\n";
+					str += $("#gender").val()+"\n";
+					str += $("#intro").val()+"\n";
+					//str += $("#work :selected").val()+"\n\n";
+					str += $("#work").val()+"\n\n";
+					
+					alert(str);
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<form>
+			이름 : <input type="text" id="userName" value="name"><br>
+			성별 : <input type="radio" id="gender" name="gender" value="male">남자
+				  <input type="radio" id="gender" name="gender" value="female">여자<br>
+			소개 : <textarea rows="4" cols="40" id="intro"></textarea><br>
+			직업 : <select id="work">
+					<option value="programmer">프로그래머</option>
+					<option value="student">학생</option>
+					<option value="worker">공무원</option>
+					<option value="noWorker">백수</option>
+				  </select>
+			<br><br>
+			<input type="button" id="btnview" value="전송">
+		</form>
+	</body>
+</html>

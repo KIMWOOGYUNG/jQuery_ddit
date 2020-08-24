@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="../js/json2.js"></script>
+		<style>
+			body{background:#E6E6E6;text-align:center;}
+			body>h2{border:1px solid black; background:white;}
+			.container{width:auto; height:auto; border:1px solid black; background:white;}			
+			.container .select{width:auto; height:150px; margin:20px; border:1px solid black; text-align:center;}
+			.container .select #lprod{margin:20px;}
+			.container .select #prod{margin:20px;}
+			.container .select h2{display:inline-block;margin:20px 50px;}
+			.container .select select{display:inline-block;}
+			.container .select select #lprod{width:100px;}
+			.container .select select #prod{width:500px;}
+			.container #result{width: auto; height:400px; border:1px solid black; margin:20px;text-align:center; position:relative;}
+			.container #result table{border-collapse:collapse; text-align:center; display:inline-block; float:middle; margin-top:30px;}
+			.container #result table th{background:#E6E6E6; padding:10px;}
+			.container #result table td{padding:10px;}
+			.container #result #img{width:200px; height:200px; border:1px solid black; position:absolute; bottom:30px; left:200px; padding:10px;}
+			.container #result #detail{width:500px; height:200px; border:1px solid black; position:absolute; bottom:30px; right:200px; padding:10px;} 
+			
+		</style>	
+		<script>
+			$(function(){
+				$.ajax({
+					url : "lprod.jsp",
+					datatype : "json"
+				}).done(function(data){
+					data = JSON.parse(data.trim());
+					$.each(data, function(i){
+						$("#lprod").append("<option value='" + data[i].lprod_gu + "'>" + data[i].lprod_nm + "</option>");
+					});
+				});
+					
+				
+				$("#lprod").on('change',function(){
+					$("#prod").empty();
+					$.ajax({
+						url : "prod.jsp",
+						datatype : "json",
+						type : "post",
+						data : "lgu="+$("#lprod").val()
+					}).done(function(data){
+						//$("#result").text(data);
+						data = JSON.parse(data.trim());
+						$.each(data, function(idx){
+							$("#prod").append("<option value='" + data[idx].prod_id + "'>" + data[idx].prod_name + "</option>");
+						});						
+					});											
+				});				
+				
+				$("#prod").on('change',function(){
+					$("#result").empty();
+					$.ajax({
+						url : "result.jsp",
+						datatype : "json",
+						type : "post",
+						data : "prodId="+$("#prod").val()
+					}).done(function(data){
+						data = JSON.parse(data.trim());			
+											
+						$.each(data, function(i){
+							var id = data[i].prod_id;			
+							var name = data[i].prod_name;			
+							var lgu = data[i].prod_lgu;			
+							var buyer = data[i].prod_buyer;			
+							var cost = data[i].prod_cost;			
+							var price = data[i].prod_price;			
+							var size = data[i].prod_size;	
+							
+							var img = data[i].prod_img;	
+							var detail = data[i].prod_detail;	
+							
+							var str="";
+							str += "<table border=\"1px solid black;\">" 
+									+ "<tr><th>prod_id </th>" 
+									+ "<th>prod_name </th>" 
+									+ "<th>prod_lgu </th>" 
+				 					+ "<th>prod_buyer </th>" 
+									+ "<th>prod_cost </th>" 
+									+ "<th>prod_price </th>" 
+									+ "<th>prod_size </th>" 
+									
+									+ "<tr><td>" + id + "</td>" 
+									+ "<td>" + name + "</td>" 
+									+ "<td>" + lgu + "</td>" 
+									+ "<td>" + buyer + "</td>" 
+									+ "<td>" + cost + "</td>" 
+									+ "<td>" + price + "</td>" 
+									+ "<td>" + size + "</td></tr>" 		
+									+ "</table>";
+							
+							str += "<div id=\"img\"></div><div id=\"detail\"></div>";
+							$("#result").append(str);
+							$("#img").append(img);
+							$("#detail").append(detail);
+						});
+						
+					});
+				});
+				 
+			});
+		</script>
+	</head>
+	<body>
+		<h2>제품리스트</h2>
+		<div class="container">
+			<div class="select">
+				<h2>분류리스트</h2>
+				<h2>PROD 리스트</h2><br>
+				<select id = "lprod">
+				</select>			
+				<select id = "prod"></select>			
+			</div>
+			<div id="result">
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,0 +1,10 @@
+COLON=\#ffffff | null | false | false | false | false
+COMMA=\#62b0ff | null | false | false | false | false
+CURLY_BRACE=\#ffffff | null | false | false | false | false
+NORMAL=\#ffffff | \#ffffff | false | false | false | false
+OBJECT_KEY=\#ffff00 | null | false | false | false | false
+VALUE_NUMBER=\#ffffff | null | false | false | false | false
+VALUE_STRING=\#c0c0c0 | null | false | true | false | false
+catalogEntries=<?xml version\="1.0" encoding\="UTF-8" standalone\="yes"?><entries/>
+eclipse.preferences.version=1
+org.eclipse.wst.json.ui.custom_templates=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>

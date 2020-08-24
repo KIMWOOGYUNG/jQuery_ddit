@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>join</title>
+		<script src="../js/jquery-3.4.1.min.js"></script>
+		<script>
+			function proc1(){
+				//이름체크
+				
+				console.log(document.ff.name.value);//name은 get없이 그냥 쓰면됨
+				var name = document.getElementById("name").value.trim();
+				/*이름 값이 공백일 경우 "이름을 입력해주세요." 라고 alert문구를 띄우기*/
+				if(name == ""){
+					alert("이름을 입력해주세요.");
+					return false;
+				}else{
+					var regnameKor = /^[ㄱ-ㅎ가-힣]+/; //한글
+					var regnameEng = /^[a-zA-Z]+/; //한글
+					var regname = /^[ㄱ-ㅎ가-힣]+|^[a-zA-Z]+/; //영문
+					if(!regname.test(name)){
+						alert("한글 또는 영문을 입력해주세요.");
+						return false;
+					}
+					
+					//한글일때, 6자 이하 통과 : alert("6자 이하를 입력해주세요")
+					//영문일때, 5자 이상 ~ 20자 이하 통과 : alert("5자~20자 이하를 입력해주세요")
+					if(regnameKor.test(name) && name.length > 6){
+						alert("6자 이하를 입력해주세요");
+						return false;
+					}else if(regnameEng.test(name) && (name.length > 20|| name.length < 5)){
+						alert("5자~20자 이하를 입력해주세요");
+						return false;
+					}
+				}
+				
+				//주소체크 (공백여부)
+				var add = document.getElementById("add").value.trim();
+				if(add == ""){
+					alert("주소를 입력해주세요.");
+					return false;
+				}
+				
+				//생일 (공백여부, 년도/월/일 형식으로 정규식 확인)
+				var birth = document.getElementById("birth").value.trim();
+				if(birth == ""){
+					alert("아이디를 입력해주세요");
+					return false;
+				}
+				else{
+					var ckbirth = /^(19[0-9][0-9]|20\d{2})-(0[0-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1])$/;
+					if(!ckbirth.test(birth)){
+					alert("년도-월-일 형식으로 입력해주세요.");
+					return false;
+					}
+				}
+				
+				//아이디(공백여부, 영문자만 가능, 6~8사이만 가능하게)
+				var username = document.getElementById("username").value.trim();
+				if(username == ""){
+					alert("아이디를 입력해주세요");
+					return false;
+				}else{
+					var ckusername = /^[a-z0-9_]{6,8}$/;
+					if(!ckusername.test(username)){
+						alert("6~8자의 영문으로 입력해주세요.");
+						return false;
+					}
+				}
+				
+				//이메일(공백여부, 이메일 정규식 확인 ppt 19페이지참조)
+				var email = document.getElementById("email").value.trim();
+				if(email == ""){
+					alert("이메일을 입력해주세요");
+					return false;
+				}else{
+					var ckemail = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+					if(!ckemail.test(email)){
+						alert("이메일 형식으로 입력해주세요.")
+						return false;
+					}
+				}
+				
+				//휴대폰(공백여부, 휴대폰 정규식 확인 ppt 22페이지참조)
+				var phone = document.getElementById("phone").value.trim();
+				if(phone == ""){
+					alert("휴대폰번호를 입력해주세요");
+					return false;
+				}else{
+					var ckphone = /^\d{3}-\d{3,4}-\d{4}$/;
+					if(!ckphone.test(phone)){
+						alert("xxx-xxxx-xxxx 형식으로 입력해주세요.")
+						return false;
+					}
+				}
+				return true;
+			}
+		</script>
+		<script>
+			$(function(){
+				$("input[type=text]").css("border","2px solid red");
+				$("input[type=address]").css("border","2px solid orange");
+				$("input[type=birth]").css("border","2px solid green");
+				$("input[type=email]").css("border","2px solid blue");
+				$("input[type=number]").css("border","2px solid purple");
+				
+			});
+		</script>
+	</head>
+	<body>
+		<h2>회원가입</h2>
+		<form name = "ff" action = "form.jsp" onsubmit="return proc1();">
+			이름 : <input type="text" id = "name"><br>
+			주소 : <input type="address" id = "add"><br>
+			생일 : <input type="birth" id = "birth"><br>
+			아이디(6-8문자) : <input type="text" id = "username"><br>
+			이메일 : <input type="email" id = "email"><br>
+			휴대폰 : <input type="number" id = "phone"><br>
+			<input type="submit" value = "확인">
+		</form>
+	</body>
+</html>
+
+<!-- return false를 하면 함수 수행 후 그대로 멈춰있음 -->

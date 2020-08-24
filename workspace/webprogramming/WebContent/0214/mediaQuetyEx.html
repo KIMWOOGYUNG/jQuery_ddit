@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width"> 
+		<title>mediaQueryEx(미디어 쿼리 예제)</title>
+		<style>
+			.navbar{/* display:flex; */ background-color:#333; overflow:hidden;}
+			/*width를 안주면 overflow:hidden으로 담아주면 보인다.*/
+			.navbar a{padding:20px; text-decoration:none; text-align:center; color:white; display:block; float:left;}
+			
+			#aside{background-color:pink; height:300px;  border:3px solid blue; display:block; float:left; column-count:3}
+			
+			#content{background-color:pink; height:300px;  border:3px solid red; display:block; float:left; column-count:3}
+			
+			@media screen and (max-width:600px){
+				.navbar a{float:none; width:100%;}
+				#aside{float:none; width:100%; column-count:1}
+				#content{float:none; width:100%; column-count:1}
+			}
+			
+		</style>
+	</head>
+	<body>
+		<div style="background:yellow; padding:5px;">
+			<p>브라우저를 리사이징 하면 구조가 변경됩니다</p>
+		</div>
+		<div class="navbar">
+			<a href="">링크1</a>
+			<a href="">링크2</a>
+			<a href="">링크3</a>
+			<a href="">링크4</a>
+		</div>
+			<!-- id가 aside, content (총 div 2개 생성)
+				 600px 이하면 위아래로 보여지게
+				 601px 이상이면 양옆으로 보여지게
+				 
+				 사이즈는 자유
+			 -->
+		<div id = "aside">
+			a먼저 K-POP의 구분이란, 사실 장르보단 스타일적 구분에 가깝다. 예를 들어 발리우드나 JRPG의 경우, 특정 장르는 아니지만, 발리우드 특유의 뮤지컬 영화[1]와 JRPG 특유의 턴제 RPG가 먼저 떠오르는 것처럼 K-POP 특유의 아이돌 퍼포먼스 음악이 먼저 떠오르는 것이다. 여기서 장르라 함은 국악, 클래식, 트로트, 락, 팝, R&B, 발라드, 힙합, 재즈, 포크, 가스펠, 동요 등이고, 스타일은 모던락 모던팝 처럼 모던, 블루스, 하이브리드, Korean 등 장르 앞에 수식어로 붙는 음악적 형태를 일컫는다. K-팝을 비롯한 K-락, K-힙합, K-동요 등 모두 한국 특유의 분위기를 엿볼 수 있다.[2]
+
+(넷플릭스 익스플레인: 세계를 해설하다 제4화 케이팝의 모든 것) 덧붙여 K-POP의 음악 장르를 대분류로 구성하면 크게 최신 트렌드의 댄스 뮤직, EDM, 하우스, 일렉트로니카 클럽 뮤직이 가장 큰 지분을 차지하고 록 음악과 힙합, 미디움 템포 발라드 등이 서브로 주로 포함되며 쇼비지니스 산업과 관계가 매우 밀접하다고 볼 수 있다.
+
+어디까지로 경계를 구분하느냐의 차이겠지만, 인디 음악의 경우는 K-POP에 포함되기 애매한 것이 이 때문이다.[3] 즉, 대중음악 산업에서 포지셔닝의 차이로도 볼 수 있다. 현재의 양상은 2007년 이후 한국 아이돌 항목에 분류된 '3세대 아이돌'부터 정립됐다.
+
+꼭 한국인이 불러야 K-POP이라는 법은 없으나 대체로 한국에서 만들어져서, 한국어가 들어가고 한국인들이 향유하고 있는 가요가 K-POP이라는 견해가 우세한 편이다. 즉, 부르는 사람의 인종보다 해당 문화를 누리어 소유하고 있는 사람들의 국적이 더 중요하다고 여기는 편이다.
+
+최근 K-POP이 선풍적인 인기를 끌자, K-POP도 아니면서 K-POP스러움을 어필하여 K-POP으로 위장한, 가짜 K-POP이 문제로 여겨지고 있다.
+
+(K-POP의 범위와 정의에 대해서 클래식 음악인에 대해 정체성과 주체성, 변별력에 관한 관점에서 나온 기사가 있다.)
+		</div>
+		<div id = "content">
+			이 시기의 한국 대중음악에서 가장 중추적인 변화 중 하나는 한국형 블루스라고 볼 수 있는 소위 한국형 발라드를 완성했다는 점에 있다. 이런 한국형 발라드의 틀을 완성한 두 인물로 이문세의 히트곡을 많이 작사/작곡한 이영훈과 가수 유재하가 거론되며 그들의 영향력은 지금까지 미치고 있다.
+
+마이클잭슨부터 NKOB로 이어지는 영미팝의 영향이 여전히 지대하게 존재하였으나 이 시기 이후 대한민국에서 대중음악계의 인기는 역전되기 시작한다. 한국 대중음악시장에서 외국 음악이 No.1의 자리를 차지한 것은 NKOB가 사실상 마지막이다.
+
+조용필 그리고 시나위, 들국화 같은 밴드들이 한국 대중음악의 토양을 만들었다. 시대적 상황 등의 영향으로 1970년대부터 이어진 포크송 장르가 이 당시 대중가요의 한 축을 이루었다.
+
+또한 3저호황으로 더욱 발전한 경제에 힘입어 부모에게 용돈을 받아서 나이키 신발 사서 신고, 가수들 음반 사고, 공연 보러 다니는 10대가 새로운 소비자로 등장함으로써 서태지와 아이들이 등장하는 계기가 되고, 나아가 향후 한류로까지 발전하는 K-POP의 토대가 된다.
+		</div>
+	</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>javascript_기초2</title>
+		<script>
+		/*body태그를 모두 로딩한 후에 실행하는 함수*/
+			window.onload=function(){
+				document.getElementById("box").innerHTML="Hello world";
+			}
+			var str = "문자열";
+			str = 1.9;
+			str = '*';
+			 
+			alert(str);
+			
+			function myFunc(){}
+		</script>
+	</head>
+	<body>
+		<!-- body태그안에 div id="box"를 하나 작성하고 
+			 해당 div안에 "Hello world"를 넣어보세요 (javascript이용)
+		-->
+		<div id = "box" onlick="myFunc();"></div>
+		
+		
+	</body>
+</html>
+
+<!-- * window.onload : body태그를 모두 로딩한 후에 실행하는 함수
+						이 부분에서 순차적으로 아래로 내려가지 않고 body태그를 먼저 확인함 
+						header에서 작성하고 싶을 때 style태그에 그냥 script를 쓰면 안되고 onload필요!
+	 * alert : 경고창
+	 * var : 데이터타입인데 모든 형을 사용(문자열, 정수, 실수 등 심지어 배열도)
+-->

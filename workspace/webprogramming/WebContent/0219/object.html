@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>객체(object)</title>
+		<script>
+			var arr = new Array();	//(내장)객체를 이용한 표현법
+			
+			//사용자 정의 객체
+			//방법1) 객체 상수로 부터 객체 생성 하는 방법
+			
+			var myCar = {
+					//속성(property) - 명사
+					model : "bmw 520d",
+					speed : 0,
+					color : "black",
+					//메서드(method) - 동사
+					brake : function(){this.speed -= 10;},
+					accel : function(){this.speed += 10;}
+			};
+			
+			console.log(myCar.speed);	//콘솔창에 띄움
+			myCar.accel();				//메서드 호출
+			myCar.accel();
+			console.log(myCar.speed);	//메서드 호출 후 값이 변화
+			
+			//방법2) 생성자를 이용해 객체 생성 하는 방법
+			function Car(model, speed, color){
+				//따로 기본 선언 없이 바로 this.변수명으로 선언가능
+				this.model = model;
+				this.speed = speed;
+				this.color = color;
+				
+				this.brake = function(){
+					this.speed -= 10;
+				}
+				this.accel = function(){
+					this.speed += 10;
+				}
+			}
+			
+			var myCar = new Car("bmw 520d", 0, "white");
+			console.log(myCar.color);
+			myCar.color = "yellow";
+			console.log(myCar.color);
+//-----------------------------------------------------------------			
+			//accel 호출 3번 연속 해주세요. 콘솔에 speed값을 출력하세요.
+			myCar.accel();
+			myCar.accel();
+			myCar.accel();
+			console.log(myCar.speed);
+			
+			//객체를 이용한 방법으로 person 객체를 만들고
+			//속성 name, age, tall 메서드 growup - 키가자란다
+			//호출 : 나이를 한살씩 먹으면 키가 2cm 씩 자란다
+			//출력 : 나이, 키
+//상수이용--------------------------------------------------------------			
+			var person = {
+					name : "김우경",
+					age : 8,
+					tall : 130,
+					growup : function(){this.age += 1; this.tall += 2}
+			};
+			person.growup();
+			console.log(person.age);
+			console.log(person.tall);
+//생성자이용-------------------------------------------------------------			
+			function person(name, age, tall){
+				this.name = name;
+				this.age = age;
+				this.tall = tall;
+				
+				this.growup = function(){this.age += 1; this.tall += 2}
+			}
+			var person = new person("우갱", 26, 157);
+			person.growup();
+			console.log(person.age);
+			console.log(person.tall);
+			
+		</script>
+	</head>
+	<body>
+	
+	</body>
+</html>

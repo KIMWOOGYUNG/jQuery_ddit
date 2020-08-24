@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>ajax_memJoin</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script>
+			$(function(){
+				$("#ff").submit(function(){
+					if($("#pw").val() != $("#pw_re").val()){
+						$("body").append("비밀번호가 일치하지 않습니다.");
+					}else{
+						$.ajax({
+							url : "jdbc_insert.jsp",
+							type : "post",
+							datatype : "jsp",
+							data : "id=" + $("#id").val()
+								    + "&pw=" + $("#pw").val()
+									+ "&name=" + $("#name").val()
+									+ "&add1=" + $("#add1").val()
+									+ "&add2=" + $("#add2").val()
+									+ "&tel=" + $("#tel").val()
+						}).done(function(data){
+							data = data.trim();
+							$("body").append(data + "전송 성공");
+						}).fail(function(data){
+							$("body").append(" 전송 실패");
+						});
+					};
+					return false;
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<h2>회원가입</h2>
+		<form id="ff">
+			ID : <input type = "text" id = "id"><br>
+			비밀번호 : <input type = "password" id = "pw"><br>
+			비밀번호확인 : <input type = "password" id = "pw_re"><br>
+			이름 : <input type = "text" id = "name"><br>
+			주소1 : <input type = "text" id = "add1"><br>
+			주소2 : <input type = "text" id = "add2"><br>
+			전화번호 : <input type = "text" id = "tel"><br>
+			<input type="submit" value="회원가입">
+		</form>
+	</body>
+</html>

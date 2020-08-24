@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>게시판</title>
+		<script src = "../js/jquery-3.4.1.min.js"></script>
+		<script src = "../js/json2.js"></script>
+		
+		<!-- Font Awesome -->
+	    <link rel="stylesheet" href="plugins/fontawesome-free/css/all.min.css">
+	    <!-- Tempusdominus Bbootstrap 4 -->
+	    <link rel="stylesheet" href="plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+	    <!-- iCheck -->
+	    <link rel="stylesheet" href="plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+	    <!-- JQVMap -->
+	    <link rel="stylesheet" href="plugins/jqvmap/jqvmap.min.css">
+	    <!-- Theme style -->
+	    <link rel="stylesheet" href="dist/css/adminlte.min.css">
+	    <!-- overlayScrollbars -->
+	    <link rel="stylesheet" href="plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+	    <!-- Daterange picker -->
+	    <link rel="stylesheet" href="plugins/daterangepicker/daterangepicker.css">
+	    <!-- summernote -->
+	    <link rel="stylesheet" href="plugins/summernote/summernote-bs4.css">
+		
+		<style>
+			
+		</style>
+		<script>
+			
+		</script>
+	</head>
+	<body>
+		<form id="boardform" action="select.jsp" method="post">
+			<table id="example2" class="table table-bordered table-jover dataTable dtr-inline" role="grid" aria-describedby="example2_info">
+				<tr role="row">
+					<th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-label="Rendering engine: activate to sort column descending" aria-sort="ascending">헤더</th>
+				</tr>
+				<tr role="row" class="odd">
+					<td tabindex="0" class="sorting_1">데이터</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>

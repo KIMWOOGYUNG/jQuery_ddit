@@ -1,0 +1,25 @@
+function solution(n, money) {
+    var answer = 0;
+    
+    //한개씩
+    for(var i = 0; i < money.length; i++){
+    	if(n % money[i] == 0){
+    		answer++;
+    	}
+    	for(var j = 0; j < money.length; j++){
+    		if((n - money[i]) % money[j] == 0){
+    			answer++;
+    		}
+        	
+    	}
+    }
+    
+    //두개~
+    for(var j = 0; j < money.lenth; j++){
+    	
+    }
+    
+    return answer;
+}
+
+console.log(solution(5,[1,2,3])); //4

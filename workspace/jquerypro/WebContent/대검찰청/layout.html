@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>대검찰청 - 대검찰청</title>
+		
+		<!-- use CDN jquery-->
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script src="../js/jquery-1.9.1.min.js"></script>
+		<script src="../js/gnb.js"></script>
+		<!-- use Local jquery-->
+		<!-- <script src="../js/jquery-3.4.1.min.js"></script> -->
+		<style>
+			html{height:100%;margin:0; padding:0;}
+			a{text-decoration:none;}
+			a:visited{color:black;}
+			body{width:100%;height:100%;margin:0; padding:0;}
+			div{border:0px solid grey;}
+			#header{width:1100px; height:120px; text-align:center; margin:0 auto; position:relative;}
+				h1{display:inline-block; float:left;}
+				#topMenu{width:470px; height:30px; display:inline-block; float:right; margin-left:-10px;}
+				#topMenu ul{height:20px;font-size:12px; font-weight:bold; color:rgb(51, 51, 51); margin-right:60px; padding:0;}
+				#topMenu li{display:inline-block;}
+				#bar{width:1px; height:12px; background-color:#dddddd; margin:0 7px;}
+				#flag{float:left;margin-top:13px;}
+				#big{width:16px; height:16px;}
+				
+				#nav{top:68px;}
+				#navTxt{float:left; margin-left:90px; margin-top:20px;}
+				#menu ul{display:inline-block;}
+				#navTxt li{width:100px; display:inline-block; font-size:17px; margin:0 5px;}
+				#icon{display:inline-block; float:right;}
+				#icon img{width:24px; height:22px; margin-top:34px;}
+				button{border:none; background:none;}
+				
+				#submenu{width:1920px; height:480px; background:pink; top:135px; z-index:99999; margin-left:-410px; position:absolute;}
+				.sub_nav p{display:inline-block; float:left; margin-left:400px; font-size:32px; margin-right:40px;}
+				.sub_rt_nav ul{display:inline-block; float:left; list-style:none; text-align:left;}
+				.sub_rt_nav ul.dep02_nav {margin-left:80px; font-size:17px; font-weight:bold; padding:0;}
+				.sub_rt_nav ul.dep03{padding:0; margin:10px 0; font-size:14px; font-weight:normal;}
+				.sub_rt_nav ul.dep03 li{margin:5px 0;}
+				#subCateg{text-weight:bold;}
+			
+			#container{width:100%;}
+				#mainTop{height:560px;}
+				#mainTop img{width:1920px; height:560px; position:relative;}
+				#mainTopText{color:white; font-size:54px; position:absolute; margin:-410px 0px 0px 450px;}
+			
+			#relationBanner{height:50px;}
+			#footer{height:200px;}
+		</style>
+		<script>
+ /* 
+			$(function(){
+				$("#submenu").hide();
+				
+				$("#menu").mouseenter(function(){
+					$("#submenu").slideToggle("slow");
+				});
+				
+				$("#menu").mouseleave(function(){
+					$("#submenu").slideToggle();  //5초
+				});
+				
+			});
+			    */
+			    
+			$(function(){
+				var cntUp = 1;
+				$("#big").click(function(){
+					//5번 클릭하면 더이상 커지지 않도록
+					if(cntUp <=5){
+						$("body").css("zoom","+=5%");
+						cntUp++;
+					};
+				});				
+				var cntDown = 1;
+				$("#small").click(function(){
+					if(cntDown <= 5){
+						$("body").css("zoom","-=5%");
+						cntDown++;
+					};
+				});
+			});
+			
+			
+			 
+		</script>
+</head>
+<body>
+	<div id="header">
+		<h1 id="Logo"><img src = "http://www.spo.go.kr/images/common/bg_logo_m.png"></h1>
+		<div id="topMenu">
+			<span id="flag"><img src="http://www.spo.go.kr/images/common/bg_nation.png"/></span>
+			<ul>
+				<li>국가상징안내</li>
+				<li id="bar"></li>
+				<li>역사체험관</li> 
+				<li id="bar"></li>
+				<li>글자크기 조정
+					<button id="big" src="http://www.spo.go.kr/images/common/btn_fontsize.png"></button><button id="small">-</button></li> 
+				<li id="bar"></li>
+				<li>KOREAN</li> 
+			</ul>
+		</div>
+		<nav id="menu">
+			<div id="navTxt">
+				<ul>
+					<li><a href="http://www.spo.go.kr/site/spo/01/10101010100002018100810.jsp">참여민원</a></li>
+					<li><a href="http://www.spo.go.kr/site/spo/02/10201010100002018112912.jsp">검찰활동</a></li>
+					<li><a href="http://www.spo.go.kr/site/spo/crimeAnalysis.do">정보자료</a></li>
+					<li><a href="http://www.spo.go.kr/site/spo/ex/board/List.do?cbIdx=1401">알림소식</a></li>
+					<li><a href="http://www.spo.go.kr/site/spo/05/10501010000002018100812.jsp">정보공개</a></li>
+					<li><a href="http://www.spo.go.kr/site/spo/08/10801000000002018100812.jsp">검찰소개</a></li>
+				</ul>
+			</div>
+				<div id="icon">
+					<button><img src = "http://www.spo.go.kr/images/common/btn_sch.png"></button>
+					<button><img src = "http://www.spo.go.kr/images/common/btn_allmenu_m.png"></button>
+				</div>
+				<div id="submenu">
+					<div class="sub_nav">
+						<p>정보자료</p>
+						<div class="sub_rt_nav">
+							<ul class="dep02_nav">
+								<li><a href="">통계자료</a></li>
+									<ul class="dep03">			
+										<li><a href="">- 범죄분석</a></li>
+										<li><a href="">- 범죄동향리포트</a></li>
+										<li><a href="">- 형사사건동향</a></li>
+									</ul>
+							</ul>
+							<ul class="dep02_nav">	
+								<li><a href="#">연구자료</a></li>
+									<ul class="dep03">			
+										<li><a href="">- 검찰관련 연구자료</a></li>
+										<li><a href="">- 해외연수검사 연구논문</a></li>
+										<li><a href="">- 검찰연감</a></li>
+									</ul>
+							</ul>
+							<ul class="dep02_nav">
+								<li><a href="">나라지표상황판</a></li>		
+							</ul>
+							<ul class="dep02_nav">
+								<li><a href="">훈령/예규</a></li>		
+							</ul>
+						</div>
+					</div>
+				</div>
+		</nav>
+	</div>
+	<div id="container" class="main">
+		<div id="content">
+			<div class="mainTop">
+				<img src="http://www.spo.go.kr/upload/mainImage/spo/MSI_201907240802051580.jpg">
+				<div id="mainTopText">국민과 함께하는 검찰</div>
+			</div>
+			<div class="mainCont svc"></div>
+			<div class="mainCont noti"></div>
+			<div class="mainCont etc"></div>
+		</div>
+	</div>
+	<div id="relationBanner"></div>
+	<div id="footer"></div>
+</body>
+</html>

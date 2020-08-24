@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Calendar 달력</title>
+		<style>
+		table, td{
+			border:1px solid black;
+			width:300px;
+		}
+		td{
+			width:calc(300/7)px;
+			text-align:center;
+		}
+		</style>
+		<style>
+		table, td{border:1px solid black;}
+		</style>
+		<script>
+		var year = 2020;
+		var month = 2;
+		window.onload = function(){
+			var str = "";
+			var day = 1;
+			
+			var now = new Date(); //"2020-02-01"
+			now.setFullYear(year);
+			now.setMonth(month); //1월로 세팅
+			now.setDate(1);
+			
+			
+			var nowDay = now.getDay(); //2020년 2월 1일 = 요일값;
+			//alert(nowDay);
+			var lastDay = (new Date(now.getFullYear(),now.getMonth() + 1,0)).getDate();
+			var dayArr = ["일", "월", "화", "수", "목", "금", "토"];
+			//alert(lastDay);
+			
+			
+			str += "<table>";
+			str += "<caption>";
+			str += year + "년 달력";
+			str += "</caption>";
+			
+			str += "<tr>";
+			
+			str += "<td>";
+			str += "<button onclick='prev()'>";
+			if(now.getMonth() == 0) str += 12;
+			else str += now.getMonth();
+			str += "월</button>";
+			str += "</td>";
+			
+			str += "<td colspan='5'>";
+			str += "<button>" + (now.getMonth()+1)+"월";
+			str += "</td>";
+			
+			str += "<td>";
+			str += "<button onclick='next()'>"
+			if(now.getMonth() == 11) str += 1;
+			else str += (now.getMonth() + 2)+"월</button>";
+			str += "</td>";
+			
+			str += "</tr>";
+			
+			//요일넣기
+			str += "<tr>";
+			for(var i in dayArr){
+				str += "<td>";
+				str += dayArr[i];
+				str += "</td>";
+			}
+			str += "</tr>"
+			
+			//행
+			for(var j = 0; j < 5; j++){
+				str += "<tr>";	
+				//한칸
+				for(var i = 0; i < 7; i++){
+					str += "<td>";
+
+					if(!(j == 0 && i < nowDay)){	//첫번째 행이면서 현재 요일보다 작으면 공백 아니면 숫자넣기
+						if(day <= lastDay){
+						str += day++;
+						}
+					
+					
+					}
+					str += "</td>";
+				}
+				
+				str += "</tr>";
+			}
+			str += "</table>";
+			
+			document.getElementById("cal").innerHTML = str;
+			//document.getElementById("cal").innerHTML = nowDay;
+		}
+		document.write(month);
+		function prev(){
+			if(month == 0){
+				year--;
+				month = 11;
+			}else month--;
+			window.onload();
+		}
+		function next(){
+			if(month == 11){
+				year++;
+				mon = 0;
+			}else month++;
+			window.onload();
+		}
+		</script>
+	</head>
+	<body>
+		<div id = "cal"></div>
+	</body>
+</html>

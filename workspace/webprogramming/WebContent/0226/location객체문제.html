@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>location객체문제</title>
+		<script>
+			//문제1) 3초마다 페이지가 리로드 되게 해주세요. (f12 element놓고 확인 (페이지 깜빡임))
+
+			window.onload = function(){
+				//setInterval(reload, 3000);
+				setInterval(imgTag, 3000);
+			}
+			/* function reload(){
+				location.reload(); 
+			} */
+			
+			//문제2) 3초마다 img태그생성한 후에 body에 하나씩 붙여주세요
+			
+			function imgTag(){
+				var id = document.getElementById("result");
+				
+				vimg = "beach";
+				
+				imgEle = document.createElement("img");
+				imgEle.src = "../img/" + vimg + ".jpg";
+				imgEle.width = 100;
+				imgEle.height = 100;
+				
+				id.appendChild(imgEle);
+			}
+			
+		</script>
+	</head>
+	<body>
+		<div id = "result">여기 색상을 변경해주세요.</div>
+	</body>
+</html>

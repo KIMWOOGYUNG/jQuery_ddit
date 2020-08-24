@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>storage_ex</title>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+		<script>
+			/*
+				이름(name), 주소(addr), 전화번호(tel) input type="text"로 html에서 생성 후
+				버튼하나 생성해서 클릭하면
+				
+				localStorage에 3개의 데이터를 key, value로 넣기
+			*/
+			
+			$(function(){
+				$("button").click(function(){
+					nameVal = $("#name").val();
+					addrVal = $("#addr").val();
+					telVal = $("#tel").val();
+					
+					localStorage.setItem("name",nameVal);
+					localStorage.setItem("addr",addrVal);
+					localStorage.setItem("tel",telVal);
+				});
+			});
+			
+			/*
+				1) localStorage에 id="본인id", pw="1234"로 생성
+				2) 아이디(id), 비밀번호(pw), 로그인 버튼을 html에서 생성
+				3) id, pw 기입 후로그인 버튼을 눌렀을 경우,
+					localStorage에 있는 값을 가져와서
+					id와 비밀번호가 일치하면
+					
+					body태그(버튼 뒤로)에 "로그인 되었습니다."
+									 "id, pw가 일치하지 않습니다."
+			*/
+			
+			localStorage.setItem("id","kwg950807");
+			localStorage.setItem("pw","1234");
+			
+			$(function(){
+				$("#btn2").click(function(){
+					$("div").empty();
+					putId = $("#id").val();
+					putPw = $("#pw").val();
+					
+					if(putId == localStorage.getItem("id") && putPw == localStorage.getItem("pw")){
+						$("div").append("로그인 되었습니다.");
+					}else{
+						$("div").append("id, pw가 일치하지 않습니다.");
+					}
+					
+				});
+			});
+		</script>
+	</head>
+	<body>
+		<input type="text" id="name">
+		<input type="address" id="addr">
+		<input type="tel" id="tel">
+		<button>버튼클릭</button>
+		<hr>
+		<input type="text" id="id">
+		<input type="password" id="pw">
+		<button id="btn2">로그인</button>
+		<div></div>
+		<hr>
+	</body>
+</html>

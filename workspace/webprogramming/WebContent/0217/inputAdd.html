@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>inputAdd(텍스트 박스 연산자)</title>
+		<script>
+			function plus(){
+				var x = document.getElementById("x").value; //"10"
+				var y = document.getElementById("y").value; //"20"
+				
+				document.getElementById("result").innerHTML=parseInt(x)+parseInt(y); //정수형변환
+			}
+			function minus(){
+				var x = document.getElementById("x").value; 
+				var y = document.getElementById("y").value; 
+				
+				document.getElementById("result").innerHTML=parseInt(x)-parseInt(y); //정수형변환
+			}
+			function multiple(){
+				var x = document.getElementById("x").value;
+				var y = document.getElementById("y").value; 
+				
+				document.getElementById("result").innerHTML=parseInt(x)*parseInt(y); //정수형변환
+			}
+			function divide(){
+				var x = document.getElementById("x").value; 
+				var y = document.getElementById("y").value; 
+				
+				document.getElementById("result").innerHTML=parseInt(x)/parseInt(y); //정수형변환
+			}
+			
+			function op(op){
+// 				alert(op);
+				var x = document.getElementById("x").value;
+				var y = document.getElementById("y").value;
+				
+				var result = 0;
+				if(op == "+"){
+					result=parseInt(x)+parseInt(y);
+				}else if(op == "-"){
+					result=parseInt(x)-parseInt(y);
+				}else if(op == "*"){
+					result=parseInt(x)*parseInt(y);
+				}else if(op == "/"){
+					result=parseInt(x)/parseInt(y);
+				}
+				document.getElementById("result").innerHTML = result;
+			}
+		</script>
+	</head>
+	<body>
+		X : <input type="text" id="x"><br>
+		Y : <input type="text" id="y"><br>
+		
+		<button id = "op" onclick="op('+')">더하기</button> <!-- onclick의 값을 파라미터로 넘김 -->
+		<button id = "op" onclick="op('-')">빼기</button>
+		<button id = "op" onclick="op('*')">곱하기</button>
+		<button id = "op" onclick="op('/')">나누기</button>
+		
+		<!-- <button id="sum" onclick="plus();">더하기</button>
+		<button id="sum" onclick="minus();">빼기</button>
+		<button id="sum" onclick="multiple();">곱하기</button>
+		<button id="sum" onclick="multiple();">나누기</button> -->
+		<!-- 뺄셈 곱셈 나눗셈 버튼을 만들고 각각 함수를 호출해서 result에 출력하세요 -->
+		
+		<span id = "result"></span>
+	</body>
+</html>
+
+<!-- value : 텍스트박스 안의 값 가져옴 
+	 inner : span, div, p 등의 내용
+	 정수 형변환 : parseInt() 또는 *1
+-->

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<script>
+			function myFunc(){
+				var fruits = ["apple", "banana", "peach"];	//배열선언(리터럴로 생성)
+				
+				document.write(fruits[0] + "<br>");
+				document.write(fruits[1] + "<br>");
+				document.write(fruits[2] + "<br>");
+				
+				fruits[3] = "orange";
+				fruits[10] = "grape";
+				fruits[11] = 11;
+				fruits[12] = 1.1;
+				//한 배열에 문자열이나 숫자나 다 들어갈 수 있음
+				
+				document.write(fruits + "<br>");	//배열명만 찍으면 원소들 다 찍힘
+				document.write(fruits.toString() + "<br>");	
+				//배열명만 사용하는것과 .toString()메서드를 사용하는것은 동일한 출력값을 갖는다.
+				
+				document.write("배열의 길이 : " + fruits.length);
+				
+				document.write("<hr>");
+	//----------------------------------------------------------------			
+				var food = new Array(); //객체로 배열생성
+				
+				food[0] = "삼겹살";
+				food[1] = "족발";
+				food[2] = "짜장면";
+				food[3] = "떡볶이";
+				food[4] = "스파게티";
+				
+				document.write(food + "<br>");
+				
+				for(var i = 0; i < food.length; i++){
+					document.write(food[i] + "<br>");
+				}
+				
+				for(var i in food){	//for -in 문 (인덱스 in 배열)
+					document.write(food[i]);
+				}
+			}
+			//myFunc();
+			
+			/*prompt로 자신이 가고싶은 휴가지를 입력받으세요
+			배열을 선언한 후 해당 휴가지의 텍스트를 입력하세요
+			마지막에 공백을 입력하면 (엔터만 치면) 배열을 출력하세요*/
+			
+			function vacation(){
+				var vac = new Array();
+				var i=0;
+				do{
+					var input = prompt("휴가지를 입력하세요");
+					
+					vac[i++] = input;
+					
+				}while(input != "");
+				
+				for(var i in vac){
+					document.write(vac[i] + "<br>");
+				}
+				
+				document.write(vac.length);
+			}
+			//vacation();
+			
+			/*prompt로 숫자를 입력받아서 0이 입력되면 반복문을 종료하고
+			  입력된 짝수번째의 합과 홀수번째의 합을 출력하세요*/
+			
+			var arr = new Array();
+			var i = 0;
+			var sum1 = 0;
+			var sum2 = 0;
+			do{
+				var input = parseInt(prompt("숫자를 입력해주세요"));
+				arr[i] = input;
+				
+				if(i % 2 == 0){
+					sum1 += arr[i];
+				}else if(i % 2 != 0){
+					sum2 += arr[i];
+				}
+				i++;
+				
+			}while(input != 0);
+			
+			
+			document.write("짝수번째의 합 : " + sum1 + "<br>");
+			document.write("홀수번째의 합 : " + sum2 + "<br>");
+			
+			
+			/*
+			프로그래머스
+			코딩테스트 연습 > 모든문제
+			level1, javascript
+			문제1) 같은숫자는 싫어
+			문제2) 나누어 떨어지는 숫자 배열
+			*/
+			
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</html>

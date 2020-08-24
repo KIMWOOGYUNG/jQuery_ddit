@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>회원가입</title>
+		<script src = "../js/jquery-3.4.1.min.js"></script>
+		<script src = "../js/json2.js"></script>
+		<style>
+			a{text-decoration:none;}
+			a:hover,a:focus{text-decoration:none;}
+			body{padding:0 10px 10px 10px; margin:0;}
+			html{margin:0; padding:0;}
+			
+			header{width:100%; border-bottom:2px solid #052e6c;}
+			header .wrap{width:980px;height:100px;margin:0 auto;position:relative;}
+			header .wrap h1 #txt{margin:20px; color: #023167; font-size:32px; font-weight:bold;}
+			
+			.container{width:1024px; margin:0 auto;}
+			.container .cont_top{margin:0px 0 10px;}
+			.container .cont_top h3{margin-top:40px; padding: 0 0 10px 20px;font-weight:bold; font-size:20px;}
+			.container .status_desc{font-size:14px; color:#ff5353; margin:3px 0;}
+			.container .joinForm table{border-top: 2px solid #bbbbbb; margin:0; border-spacing:0;}
+			.container .joinForm table tr{width:100%;}
+			.container .joinForm table th{width:230px; padding: 16px 10px; border-bottom: 1px solid #d9d9d9; background-color: #f6f6f6;}
+			.container .joinForm table td{border-bottom: 1px solid #d9d9d9; border-left: 1px solid #d9d9d9; padding:14px 10px; font-size:17px; color: #494949;}
+			.container .joinForm table #idcheck{background:white; border:1px solid #3d7cc3; font-size:16px; color:#3d7cc3;padding:7px 30px; top:2px; position:relative;}
+			.container .joinForm table #idcheck:hover{background:#3d7cc3; color:#FFF;}
+			.container .joinForm table td #useOrNot{color:#8600CF; font-size:14px;}
+			.container .joinForm table td #btnAddr{margin-left:3px; margin-bottom:5px; background:white; border:1px solid #3d7cc3; font-size:16px; color:#3d7cc3;padding:7px 30px; top:2px; position:relative;}
+			.container .joinForm table #btnAddr:hover{background:#3d7cc3; color:#FFF;}
+			.container .joinForm table td #addr1{width:30%;}
+			.container .joinForm table td #addr2{width:30%;}
+			.container .joinForm table td #zipNo{width:10%;}
+			.container .joinForm table .txtinput{height:35px; padding:0 5px; width:50%; margin:3px;}
+			.container .joinForm table .birthinput{height:35px; width:90px; padding:0 5px;}
+			.container .joinForm table .emailinput{height:35px; padding:0 5px; width:40%;}
+			.container .joinForm table #btnVerifSend{background:white; border:1px solid #3d7cc3; font-size:16px; color:#3d7cc3;padding:7px 30px; top:2px; position:relative;} 	
+			.container .joinForm table #btnVerifSend:hover{background:#3d7cc3; color:#FFF;}
+			.container .joinForm table #btnVerifOk{background:white; border:1px solid #3d7cc3; font-size:16px; color:#3d7cc3;padding:7px 30px; top:2px; position:relative;} 	
+			.container .joinForm table #btnVerifOk:hover{background:#3d7cc3; color:#FFF;}
+			.container #pre_text{color:#8600CF; font-size:14px; padding:5px 0;}			
+			.footer{width:1024px; margin:0 auto; text-align:center; padding:10px;}
+			.footer #bottom_txt{font-size:14px; text-align:left; margin:5px;}
+			.footer #bottom_btn #btnSubmit{color:white; margin:10px;background:#042f6c;font-size:20px; padding: 12px 60px;}
+		</style>
+		<script>
+		
+			$(function(){
+				
+				//정규식
+				var idRegexp = /^[A-Za-z0-9_\-]{6,12}$/;
+				var pwRegexp = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,12}$/;			
+				var nameRegexp = /^[ㄱ-ㅎ가-힣]+|^[a-zA-Z]+/;
+				var email1Regexp = /^[A-Za-z0-9_\.\-]+/;
+				var email2Regexp = /^[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+				var hpRegexp = RegExp(/^01[0179][0-9]{7,8}$/);
+								
+				//입력 알림메시지
+				$(".status_desc").hide();
+				$("#useOrNot").hide();			
+				
+				//아이디
+				$("#id").click(function(){
+					$("#userId_desc").show();
+					$("#useOrNot").hide();
+				});
+				
+				$("#id").blur(function(){
+					$("#useOrNot").hide();
+					if($("#id").val() == "" || !idRegexp.test($("#id").val())){
+						$("#userId_desc").show();
+					}else{
+						$("#userId_desc").hide();
+						$("#idCheckMsg").show();
+						//아이디 중복체크
+						$("#idcheck").click(function(){
+							$("#useOrNot").show();
+							$("#idCheckMsg").hide();
+							if($("#id").val() == "" || !idRegexp.test($("#id").val())){
+								$("#userId_desc").show();
+								$("#useOrNot").hide();
+							}else{	
+								$("#userId_desc").hide();
+								$.ajax({
+									url:"idCheck.jsp",
+									type:"post",
+									datatype:"jsp",
+									data:"id=" + $("#id").val(),
+									success:function(data){
+										data = JSON.parse(data.trim());							
+										$("#useOrNot").text(data.id);
+									}
+								});
+							}
+						});
+					}
+				});
+				
+				//비밀번호
+				$("#pw").keyup(function(){
+					if($("#pw").val().length > 12){
+						alert("12자 초과 입력 불가.");
+					}
+				});
+				
+				$("#pw").click(function(){
+					$("#userPw_desc").show();
+				});
+				$("#pw").blur(function(){
+					if($("#pw").val() == "" || !pwRegexp.test($("#pw").val())){
+						$("#userPw_desc").show();
+					}else{
+						$("#userPw_desc").hide();
+					}
+				});
+				
+				
+				$("#pw_re").click(function(){
+					if($("#pw_re").val() == ""){
+						$("#userPw_re_desc").show();
+					}
+				});
+				$("#pw_re").blur(function(){
+					if($("#pw_re").val() == ""){
+						$("#userPw_re_desc").show();
+					}else if($("#pw_re").val() != $("#pw").val()){
+						$("#userPw_re_desc").hide();
+						$("#Pw_re_incorrect").show();
+					}
+					else if($("#pw_re").val() == $("#pw").val()){
+						$("#Pw_re_incorrect").hide();
+					}
+				});
+				
+				$("#_name").click(function(){
+					$("#userName_desc").show();
+				});
+				$("#_name").blur(function(){
+					if($("#_name").val() == "" || !nameRegexp.test($("#_name").val())){
+						$("#userName_desc").show();
+					}else{
+						$("#userName_desc").hide();
+					}
+				});
+				
+				$("input[name=gender]").attr("disabled",true);
+				$("#genCheckBox").click(function(){
+					if($("#genCheckBox").is(":checked") == true){
+						$("input[name=gender]").attr("disabled",false);
+						if($("input[name=gender]").is(":checked") == false){	
+							$("#userGender_check").show();
+							$("#userGender_agree").hide();
+						}else if($("input[name=gender]").is(":checked") == true){
+							$("#userGender_agree").hide();
+						}
+						$("input[name=gender]").click(function(){
+							$("#userGender_check").hide();
+						});				
+					}else{			
+						$("input:radio[name=gender]").each(function(i){
+							this.checked=false;
+						});
+						$("input[name=gender]").attr("disabled",true);
+						$("#userGender_check").hide();
+						$("#userGender_agree").show();
+					}
+				});				
+				
+			
+				
+				for(var i = 1910; i <= 2010; i++){
+					$("#year").append("<option value='" + i + "'>" + i + "</option>");
+				}
+				
+				for(var i = 1; i <= 12; i++){
+					$("#month").append("<option value='" + i + "'>" + i + "</option>");
+				}
+				
+				$("#month").change(function(){
+				
+					$("#day").empty();
+					
+					var cudate = new Date( $("#year").val(), $("#month").val(),"" );
+					var lastday = Number(cudate.getDate());
+					
+					for(var i = 1; i <= lastday; i++){
+						$("#day").append("<option value='" + i + "'>" + i + "</option>");
+					}
+					
+				});
+				
+				
+				$("#email1, #email2").click(function(){
+					$("#userEmail_desc").show();
+				});
+				
+				 $("#email1, #email2").blur(function(){
+					if($("#email1").val() == "" || $("#email2").val() == "" || !email1Regexp.test($("#email1").val()) || !email2Regexp.test($("#email2").val())){
+						$("#userEmail_desc").show();
+					}else{
+						$("#userEmail_desc").hide();
+					}
+				 });
+				 
+				$("#userhp_Check").hide();
+				$("#userTel_desc").hide();
+				
+				$("#hp").click(function(){
+					if($("#hp_agree").is(":checked") == false){
+						$("#userhp_Check").show();
+						$("#userTel_desc").hide();
+					}else{
+						$("#userTel_desc").show();
+						$("#userhp_Check").hide();
+					}
+				});
+				
+				$("#hp_agree").click(function(){
+					$("#userTel_desc").show();
+					if($("#hp_agree").is(":checked") == true){
+						if($("#hp_agree").val() == "" || !hpRegexp.test($("#hp").val())){
+							$("#userhp_Check").hide();
+							$("#userTel_desc").show();
+						}
+					}else{
+						$("#userTel_desc").hide();
+						$("#hp").val("");
+					}	
+				});
+
+				$("#hp").blur(function(){
+					$("#userTel_desc").hide();
+					$("#userhp_Check").hide();
+					if($("#hp").val() == "" || !hpRegexp.test($("#hp").val())){
+						$("#userTel_desc").show();
+					}else{
+						$("#userTel_desc").hide();
+					}
+					if($("#hp_agree").is(":checked") == false){
+						$("#userhp_Check").show();
+						$("#userTel_desc").hide();
+					}
+				});	
+				
+				$("#inputform").submit(function(){
+					if($("input[type=text]").val() == "" || 
+						$("input[type=button]").val() == "" ||
+						$("input[type=password]").val() == "" || 
+						$("input[type=radio]").val() == "" || 
+						$("input[type=checkbox]").val() == "" ){
+						
+						alert("입력하지 않은 항목이 있습니다. 다시 확인해주세요");
+						return false;
+					}else{
+						return true;
+					}
+				});
+				
+				
+			});
+			
+			
+			
+			function goPopup(){
+				// 주소검색을 수행할 팝업 페이지를 호출합니다.
+				// 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrLinkUrl.do)를 호출하게 됩니다.
+				var pop = window.open("../newPopup/jusoPopup.jsp","pop","width=570,height=420, scrollbars=yes, resizable=yes"); 
+				
+				// 모바일 웹인 경우, 호출된 페이지(jusopopup.jsp)에서 실제 주소검색URL(http://www.juso.go.kr/addrlink/addrMobileLinkUrl.do)를 호출하게 됩니다.
+			    //var pop = window.open("/popup/jusoPopup.jsp","pop","scrollbars=yes, resizable=yes"); 
+			}
+			
+			function jusoCallBack(roadFullAddr,roadAddrPart1,addrDetail,roadAddrPart2,engAddr, jibunAddr, zipNo, admCd, rnMgtSn, bdMgtSn,detBdNmList,bdNm,bdKdcd,siNm,sggNm,emdNm,liNm,rn,udrtYn,buldMnnm,buldSlno,mtYn,lnbrMnnm,lnbrSlno,emdNo){
+				// 팝업페이지에서 주소입력한 정보를 받아서, 현 페이지에 정보를 등록합니다.
+				$("#addr1").val(roadAddrPart1);
+				//document.form.roadAddrPart1.value = roadAddrPart1;
+				
+				$("#addr2").val(addrDetail);
+				//document.form.roadAddrPart2.value = roadAddrPart2;
+				
+				$("#zipNo").val(zipNo);
+				//document.form.zipNo.value = zipNo;
+			}
+			
+		</script>
+	</head>
+	<body>
+		<header>
+			<div class="wrap">
+				<h1>		
+					<span id="txt">회원가입</span>
+				</h1>
+			</div>
+		</header>
+		<div class="container">
+			<div class="cont_top">
+				<h3>정보입력 및 본인확인</h3>
+			</div>
+			<div class="joinForm">
+				<form id="inputform" action="join.jsp" method="post">
+					<table border="0"; align="center">
+						<tr>
+							<th><label for = "id">아이디</label></th>
+							<td><input type="text" id="id" class="txtinput" name="id"> 
+								<input type="button" id="idcheck" value="중복확인"><br>
+								<p class="status_desc" id="userId_desc">
+									<label id="id_error" class="error" for="userId">6-12자의 영문소문자와 숫자 사용.</label>
+								</p>
+								<span class="status_desc" id="idCheckMsg">아이디 중복확인을 해 주세요.</span>
+								<span id="useOrNot"></span>
+							</td>
+						</tr>
+						<tr>
+							<th><label for = "pw">비밀번호</label></th>
+							<td><input type="password" id="pw" class="txtinput" name="pw">
+								<p class="status_desc" id="userPw_desc">
+									<label id="pw_error" class="error" for="userPw">8-12자의 영문대소문자, 숫자, 특수문자만 가능.</label>
+								</p>
+							</td>
+						</tr>	
+						<tr>
+							<th><label for = "pw_re">비밀번호 확인</label></th>
+							<td><input type="password" id="pw_re" class="txtinput" name="pw_re"><br>
+								<p class="status_desc" id="userPw_re_desc">
+									<label id="pw_re_error" class="error" for="userPw_re">비밀번호를 다시 확인해주세요.</label>
+								</p>
+								<span class="status_desc" id="Pw_re_incorrect">비밀번호가 일치하지 않습니다.</span>
+							</td>
+						</tr>
+						<tr>
+							<th><label for = "_name">이름</label></th>
+							<td><input type="text" id="_name" class="txtinput" name="_name">
+								<p class="status_desc" id="userName_desc">
+									<label id="name_error" class="error" for="userName">한글, 영문대소문자만 가능</label>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<th>성별</th>
+							<td><input type="radio" name="gender" value="남성">남성
+								<input type="radio" name="gender" value="여성">여성
+								<input type="checkbox" id="genCheckBox" name="genAgree" value="선택정보(성별)수집 및 이용 동의">선택정보(성별)수집 및 이용 동의
+								<p class="status_desc" id="userGender_check">성별 정보를 입력해주세요. 정보제공을 원치않으시면 동의를 해제해주세요.</p>
+								<p class="status_desc" id="userGender_agree">성별을 입력하려면, 성별 정보제공에 동의해 주세요.</p>
+							</td>
+						</tr>
+						<tr>
+							<th>생년월일</th>
+							<td>
+								<select name="year" class="birthinput" id="year"></select>년
+								<select name="month" class="birthinput" id="month"></select>월
+								<select name="day" class="birthinput" id="day"></select>일
+							</td>
+						</tr>
+						<tr>
+							<th><label for = "email1">이메일</label></th>
+							<td><input type = "text" id = "email1" class="emailinput" name = "email1" class = "email1">
+								@
+								<input type = "text" id = "email2" class="emailinput" name = "email2" class = "email2">
+								<br><span id = "pre_text">아이디나 비밀번호를 찾기위해 사용되오니 정확한 정보로 입력하시기 바랍니다.</span>
+								<p class="status_desc" id="userEmail_desc">
+									<label id="email_error" class="error" for="userEmail">이메일을 입력해 주세요.</label>
+								</p>
+							</td>
+						</tr>
+						<tr>
+							<th><label for = "hp">휴대폰</label></th>
+							<td>
+								<input type = "text" id = "hp" class="txtinput" name = "hp" class = "hp" size = "50" maxlength = "11"><br>
+								<input type = "checkbox" id = "hp_agree" name = "hp_agree" class = "hp_agree">선택정보(휴대폰) 수집 및 이용 동의
+								<br><span id = "pre_text">아이디나 비밀번호를 찾기위해 사용되오니 정확한 정보로 입력하시기 바랍니다.</span>
+								<p class="status_desc" id="userTel_desc">
+									<label id="gender_error" class="error" for="userGender">휴대폰번호 정보를 입력해 주세요. 정보제공을 원치않으시면 동의를 해제해주세요.</label>
+								</p>
+								<p class="status_desc" id="userhp_Check">휴대폰번호를 입력하려면, 휴대폰번호 정보제공에 동의해 주세요.</p>
+							</td>
+						</tr>
+						<tr>
+							<th>주소</th>
+							<td>
+								<input type="button" id="btnAddr" onclick="goPopup();" value="주소검색"><br>
+								<input type="text" id="addr1" class="txtinput" name="addr1">
+								<input type="text" id="addr2" class="txtinput" name="addr2">
+								<input type="text" id="zipNo" class="txtinput" name="zipNo">
+							</td>
+						</tr>
+						<!-- <tr>
+							<th>인증방법</th>
+							<td>
+								<input type="radio" name = "check" value = "휴대폰"checked>휴대폰 
+								<input type="radio" name = "check" value = "이메일">이메일
+								<input type="button" id="btnVerifSend" onclick="alert('인증메세지가 발송되었습니다.')" value="인증">
+								<br><span id = "pre_text">휴대폰 인증을 위한 인증번호 발송은 1일 최대 3회까지 가능합니다.</span>
+							</td>
+						</tr>
+						<tr>
+							<th><label for = "checknum">인증번호</label></th>
+							<td><input type="text" name="checknum" id="checknum" class="txtinput" class="checknum">
+								<input type="button" id="btnVerifOk" onclick="alert('인증되었습니다.')"value="확인">
+							</td>
+						</tr> -->
+					
+					</table>
+					<div class="footer">
+						<!-- <div id="bottom_txt">
+							※교사 회원님을 위한 교사인증은 가입 후 회원정보수정에서 인증하실 수 있습니다.
+						</div> -->
+						<div id="bottom_btn">
+							<input type="submit" id="btnSubmit" value="확인">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</body>
+</html>

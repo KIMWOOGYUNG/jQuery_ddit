@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>webShopping</title>
+		<style>
+			header{width:100%; height:100px; background-color:#F5F5F5;}
+			header h1 img{width:100px; vertical-align:middle;}
+			header h1 a{text-decoration:none; color:black;}
+			header h1 a:hover{text-decoration:underline}
+			nav{width:100%; height:60px; background-color:#FFFFFF; border-top:3px dotted olive; border-bottom:1px solid olive; padding:15px 0;}
+			nav{text-align:center;}
+			nav ul{list-style:none; padding:0; margin:0;} /*글자의 기본 패딩과 마진을 0으로 초기화*/
+			nav ul li{display : inline-block; margin:5px 30px;}
+			nav ul li a{padding:10px; font-weight:bold; font-size:16pt; text-decoration:none; letter-spacing:0.5em;}
+			/*a태그에 주는 패딩은 a태그의 배경 크기를 늘려주는것*/
+			nav ul li a:visited{color:green;} 
+			nav ul li a:hover{color:white; background-color:red;}
+			
+			
+			aside#left{width:15%; height:500px; float:left; background-color:#707f9c; /* padding:20px 0; */} /*패딩은 전체 사이즈가 늘어난다 주의!!!*/
+			aside#left h2{color:white; padding-left:20px;}
+			aside#left ul{background-color:#525d76; list-style:none; padding:0;}
+			aside#left ul li{border-bottom:1px solid rgba(0,0,0,0.3)}
+			aside#left ul li a{text-decoration:none; color:white; font-weight:bold; padding:10px 20px; display: block;} 
+			/*a태그에 블럭넣어주면 패딩만큼 강제로 늘어남*/
+			aside#left ul li a:hover{background-color:rgba(0,0,0,0.3); color:#FF00EE;}
+			aside#left ul li a:visited{color:yellow;}
+			
+			section{width:70%; height:500px; background-color:#FFFFFF; float:left;}
+			article{height:98%;}
+			section iframe{width:100%; height:100%; overflow:hidden;}
+			section h2{display:none;}
+			
+			aside#right{width:15%; height:500px; background-color:#e0e0e0; float:left;}
+			.text{display:block; margin:2px;}
+			aside#right div{margin:10px;}
+		
+			footer{width:100%; height:40px; clear:both; background-color:black; color:white; text-align:center; padding:10px;}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>
+				<img src="../0213_project/img/shopping.jpg" alt="로고 이미지">
+				<a href="">web shopping</a>
+			</h1>
+		</header>
+		<nav>
+			<ul>
+				<li><a href="#">HOME</a></li> <!-- li태그 안쪽에 a태그 -->
+				<li><a href="#">ABOUT US</a></li>
+				<li><a href="#">NEWS</a></li>
+				<li><a href="#">MY ACCOUNT</a></li>
+				<li><a href="#">CONTACTS</a></li>
+				
+			</ul>
+		</nav>
+		<aside id="left">
+			<h2>카테고리</h2>
+			<ul>
+				<li><a href="컴퓨터.html" target="ifr">컴퓨터</a></li>
+				<li><a href="의류.html" target="ifr">의류</a></li>
+				<li><a href="">음악</a></li>
+				<li><a href="">영화</a></li>
+				<li><a href="">스포츠/레저</a></li>
+				<li><a href="">가구/인테리어</a></li>
+				<li><a href="">식품</a></li>
+			</ul>
+		</aside>
+		<section>
+			<article>
+				<h2>상세보기</h2>
+				<iframe src="컴퓨터.html" name = "ifr"></iframe>
+				
+			</article>
+		</section>
+		<aside id="right">
+			<div id="cart">
+				<h2>Shopping Cart</h2>
+				현재 쇼핑카트에 물품이 없습니다.<br><br>
+				<a href="cart.html" target="ifr">쇼핑카트 보기</a>
+			</div>
+			<br><br><br>
+			<div id="loginBox">
+				<h2>Log In</h2>
+				아이디<br>
+				<input class="text" type="text">
+				패스워드<br>
+				<input class="text" type="text"><br>
+				<button>로그인</button>
+				<button>초기화</button><br><br>
+				<a href="../0206/ebs/form_ebs_김우경.html" target="ifr">회원가입</a>
+				<a href="">비밀번호 분실</a>
+			</div>
+		</aside>
+		<footer>
+			Copyright (c)2020 KWG
+		</footer>
+		
+	</body>
+</html>
+	<!-- em : 배수 -->
+
